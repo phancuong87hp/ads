@@ -1,1 +1,1182 @@
-var _0x3ce6=['totalFrames','cos','width','ready','bubble','left','match','mcOuter','nextbubble','rows','gameover','getBoundingClientRect','addChild','tiletype','velocity','tick','scaleX','tiley','dropspeed','bottom','73PGclpA','init','sin','tilex','height','removecluster','currentFrame','gotoAndStop','alpha','type','btnContinue','sClear','gotoAndPlay','tiles','mousemove','Tween','clientX','Sound','speed','processed','shift','click','btnInstall','9683EAfATe','globalToLocal','fillStyle','415709EeswQQ','pop','random','rowheight','open','radius','removed','push','mcAnim4','floor','77223zXYjfi','columns','requestAnimationFrame','mcDot2','angle','toLowerCase','tileheight','2896924MglfBg','mcDot5','addEventListener','right','mcBubble','https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US','MovieClip','mcAnim5','measureText','1eSAdxm','mousedown','70078mUElLc','rgb(','parent','521234mAdqoH','android','clientY','747323nwSaGe','removeChild','userAgent','tilewidth','scaleY','top','visible','length','movie','text','shootbubble'];var _0x5aa8=function(_0xb3b12b,_0x16760f){_0xb3b12b=_0xb3b12b-0xf7;var _0x3ce6d1=_0x3ce6[_0xb3b12b];return _0x3ce6d1;};var _0xc376c4=_0x5aa8;(function(_0x308ee5,_0x233e67){var _0x5b650d=_0x5aa8;while(!![]){try{var _0x22d94b=-parseInt(_0x5b650d(0x117))+parseInt(_0x5b650d(0x10f))*-parseInt(_0x5b650d(0x114))+parseInt(_0x5b650d(0xff))+-parseInt(_0x5b650d(0x150))+-parseInt(_0x5b650d(0x111))+-parseInt(_0x5b650d(0x14d))*parseInt(_0x5b650d(0x136))+parseInt(_0x5b650d(0x106));if(_0x22d94b===_0x233e67)break;else _0x308ee5['push'](_0x308ee5['shift']());}catch(_0x5489e5){_0x308ee5['push'](_0x308ee5['shift']());}}}(_0x3ce6,0x7d3b0));var lib,canvas,mcGame,mcMenu,mcLine,coordList=[],container=new createjs[(_0xc376c4(0x10c))](),containerDot=new createjs[(_0xc376c4(0x10c))](),lastframe=0x0,fpstime=0x0,framecount=0x0,bubbleWidth=0x24,bubbleHeigt=0x1e,countShooter=0x8,listDot=[],mcTempBubble,isShowInstall=![],initialized=![],fixTitle=[[[0x4,0x0,0x0,0x4,0x4,0x4,0x4,0x4,0x0,0x0,0x4],[0x4,0x0,0x0,0x4,0x3,0x3,0x4,0x0,0x0,0x4,0x4],[0x4,0x4,0x0,0x0,0x4,0x3,0x4,0x0,0x0,0x4,0x4],[0x3,0x4,0x0,0x0,0x4,0x4,0x0,0x0,0x4,0x4,0x3],[0x3,0x4,0x4,0x0,0x0,0x4,0x0,0x0,0x4,0x4,0x3],[0x3,0x4,0x4,0x0,0x0,0x0,0x0,0x4,0x4,0x3,0x3],[0x3,0x3,0x4,0x4,0x0,0x0,0x0,0x4,0x4,0x3,0x3],[0x3,0x1,0x4,0x4,0x0,0x0,0x4,0x4,0x3,0x3,0x1],[0x3,0x1,0x1,0x4,0x4,0x0,0x4,0x4,0x1,0x1,0x3],[0x1,0x1,0x1,0x4,0x4,0x4,0x4,0x1,0x1,0x1,0x1],[0x1,0x1,0x1,0x1,0x4,0x4,0x4,0x1,0x1,0x1,0x1],[-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1]],[[0x1,0x1,0x1,0x1,0x1,0x0,0x1,0x1,0x1,0x1,0x1],[0x1,0x1,0x1,0x1,0x0,0x0,0x1,0x1,0x1,0x1,0x1],[0x3,0x3,0x4,0x4,0x0,0x0,0x0,0x4,0x4,0x3,0x3],[0x3,0x4,0x4,0x4,0x0,0x0,0x4,0x4,0x4,0x3,0x3],[0x3,0x4,0x4,0x4,0x2,0x0,0x2,0x4,0x4,0x4,0x3],[0x4,0x4,0x4,0x2,0x2,0x2,0x2,0x4,0x4,0x4,0x3],[0x3,0x4,0x4,0x4,0x2,0x2,0x2,0x4,0x4,0x4,0x3],[0x3,0x4,0x4,0x4,0x2,0x2,0x4,0x4,0x4,0x3,0x3],[0x3,0x3,0x4,0x4,0x4,0x2,0x4,0x4,0x4,0x3,0x3],[0x3,0x3,0x4,0x4,0x4,0x4,0x4,0x4,0x3,0x3,0x3],[0x3,0x3,0x3,0x4,0x4,0x4,0x4,0x4,0x3,0x3,0x3],[-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1]],[[0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4],[0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4,0x4],[0x1,0x1,0x1,0x1,0x1,0x1,0x1,0x1,0x1,0x1,0x1],[0x0,0x0,0x3,0x3,0x1,0x1,0x3,0x3,0x2,0x2,0x2],[0x0,0x0,0x3,0x3,0x3,0x1,0x3,0x3,0x3,0x2,0x2],[0x0,0x3,0x3,0x3,0x3,0x3,0x3,0x3,0x3,0x2,0x2],[0x0,0x0,0x3,0x3,0x3,0x3,0x3,0x3,0x3,0x2,0x2],[0x0,0x0,0x3,0x3,0x3,0x3,0x3,0x3,0x2,0x2,0x2],[0x0,0x0,0x0,0x3,0x3,0x3,0x3,0x3,0x2,0x2,0x2],[0x0,0x0,0x0,0x3,0x3,0x3,0x3,0x2,0x2,0x2,0x2],[0x0,0x0,0x0,0x0,0x3,0x3,0x3,0x2,0x2,0x2,0x2],[-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1,-0x1]]],level={'x':0x2,'y':0x0,'width':0x0,'height':0x0,'columns':0xb,'rows':0x15,'tilewidth':0x1c,'tileheight':0x1e,'rowheight':0x19,'radius':0xf,'tiles':[]},Tile=function(_0x49598f,_0x43ab1f,_0x37f3bd,_0x505865){var _0x2e18b3=_0xc376c4;this[_0x2e18b3(0x11f)]=null,this['x']=_0x49598f,this['y']=_0x43ab1f,this['type']=_0x37f3bd,this[_0x2e18b3(0xfb)]=![],this[_0x2e18b3(0x14a)]=_0x505865,this[_0x2e18b3(0x130)]=0x0,this[_0x2e18b3(0x13e)]=0x1,this[_0x2e18b3(0x149)]=![];},player={'x':0x93,'y':0x174,'angle':0x0,'tiletype':0x0,'bubble':{'movie':null,'x':0x0,'y':0x0,'angle':0x0,'speed':0x3e8,'dropspeed':0x258,'tiletype':0x0,'visible':![]},'nextbubble':{'movie':null,'x':0x0,'y':0x0,'tiletype':0x0}},neighborsoffsets=[[[0x1,0x0],[0x0,0x1],[-0x1,0x1],[-0x1,0x0],[-0x1,-0x1],[0x0,-0x1]],[[0x1,0x0],[0x1,0x1],[0x0,0x1],[-0x1,0x0],[0x0,-0x1],[0x1,-0x1]]],bubblecolors=0x5,gamestates={'init':0x0,'ready':0x1,'shootbubble':0x2,'removecluster':0x3,'gameover':0x4},gamestate=gamestates[_0xc376c4(0x137)],turncounter=0x0,rowoffset=0x0,animationstate=0x0,animationtime=0x0,showcluster=![],cluster=[],floatingclusters=[],images=[],bubbleimage,loadcount=0x0,loadtotal=0x0,preloaded=![];function showContinue(_0x2430d2,_0x5e1f64,_0x25bf6c,_0x47d1f6){var _0x1ba1e7=_0xc376c4;lib=_0x2430d2,canvas=_0x5e1f64,mcGame=_0x25bf6c,mcMenu=_0x47d1f6,mcGame[_0x1ba1e7(0x11d)]=![],mcMenu[_0x1ba1e7(0x11d)]=!![],mcMenu[_0x1ba1e7(0x10a)][_0x1ba1e7(0x13d)](0x0),mcMenu[_0x1ba1e7(0x129)][_0x1ba1e7(0x13d)](0x0),mcMenu[_0x1ba1e7(0x140)]['addEventListener'](_0x1ba1e7(0x14b),onClickContinue);}function onClickContinue(){var _0x3adb3b=_0xc376c4;mcGame['visible']=!![],mcMenu[_0x3adb3b(0x11d)]=![],initgame();}function initgame(){var _0x3f0464=_0xc376c4;mcGame[_0x3f0464(0x129)][_0x3f0464(0x13d)](0x0),mcGame[_0x3f0464(0x14c)][_0x3f0464(0x11d)]=![],mcTempBubble=mcGame[_0x3f0464(0x10a)],mcTempBubble['gotoAndStop'](0x0),mcTempBubble[_0x3f0464(0x11d)]=![],mcTempBubble[_0x3f0464(0x113)][_0x3f0464(0x118)](mcTempBubble),updateTxtShooter(),mcGame[_0x3f0464(0x12e)](containerDot),mcGame[_0x3f0464(0x12e)](container),canvas[_0x3f0464(0x108)](_0x3f0464(0x144),onMouseMove),canvas['addEventListener'](_0x3f0464(0x110),onMouseDown);for(var _0x5b93f4=0x0;_0x5b93f4<level[_0x3f0464(0x100)];_0x5b93f4++){level[_0x3f0464(0x143)][_0x5b93f4]=[];for(var _0x524bbb=0x0;_0x524bbb<level[_0x3f0464(0x12b)];_0x524bbb++){level[_0x3f0464(0x143)][_0x5b93f4][_0x524bbb]=new Tile(_0x5b93f4,_0x524bbb,0x0,0x0);}}level[_0x3f0464(0x124)]=level[_0x3f0464(0x100)]*level[_0x3f0464(0x11a)]+level[_0x3f0464(0x11a)]/0x2,level['height']=(level['rows']-0x1)*level[_0x3f0464(0xf8)]+level['tileheight'],player['x']=mcTempBubble['x'],player['y']=mcTempBubble['y'],player[_0x3f0464(0x103)]=0x5a,player[_0x3f0464(0x12f)]=0x0,player[_0x3f0464(0x12a)]['x']=0x45,player[_0x3f0464(0x12a)]['y']=0x19e,newGame(),main(0x0);}function updateTxtShooter(){var _0xc528dc=_0xc376c4;mcGame['txtShooter'][_0xc528dc(0x120)]=countShooter;}function main(_0x2f2035){var _0x3d810f=_0xc376c4;window[_0x3d810f(0x101)](main),update(_0x2f2035),render();}function update(_0x1dd7b1){var _0x36438e=_0xc376c4,_0x1b9d93=(_0x1dd7b1-lastframe)/0x3e8;lastframe=_0x1dd7b1;if(gamestate==gamestates['ready']){}else{if(gamestate==gamestates[_0x36438e(0x121)])stateShootBubble(_0x1b9d93);else gamestate==gamestates['removecluster']&&stateRemoveCluster(_0x1b9d93);}}function setGameState(_0x3c7fd0){var _0x51dbc3=_0xc376c4;gamestate=_0x3c7fd0;if(gamestate==gamestates[_0x51dbc3(0x12c)])showInstallGame();animationstate=0x0,animationtime=0x0;}function stateShootBubble(_0x4c875c){var _0x3673e9=_0xc376c4;player['bubble']['x']+=_0x4c875c*player[_0x3673e9(0x126)][_0x3673e9(0x148)]*Math[_0x3673e9(0x123)](degToRad(player[_0x3673e9(0x126)][_0x3673e9(0x103)])),player[_0x3673e9(0x126)]['y']+=_0x4c875c*player[_0x3673e9(0x126)][_0x3673e9(0x148)]*-0x1*Math[_0x3673e9(0x138)](degToRad(player['bubble'][_0x3673e9(0x103)]));if(player[_0x3673e9(0x126)]['x']<=level['x'])player[_0x3673e9(0x126)][_0x3673e9(0x103)]=0xb4-player['bubble'][_0x3673e9(0x103)],player[_0x3673e9(0x126)]['x']=level['x'];else player[_0x3673e9(0x126)]['x']+level['tilewidth']>=level['x']+level[_0x3673e9(0x124)]&&(player['bubble'][_0x3673e9(0x103)]=0xb4-player[_0x3673e9(0x126)][_0x3673e9(0x103)],player['bubble']['x']=level['x']+level['width']-level[_0x3673e9(0x11a)]);if(player[_0x3673e9(0x126)]['y']<=level['y']){player['bubble']['y']=level['y'],snapBubble();return;}for(var _0x332f46=0x0;_0x332f46<level[_0x3673e9(0x100)];_0x332f46++){for(var _0xf85a6c=0x0;_0xf85a6c<level['rows'];_0xf85a6c++){var _0x71fa99=level[_0x3673e9(0x143)][_0x332f46][_0xf85a6c];if(_0x71fa99[_0x3673e9(0x13f)]<0x0)continue;var _0x24a83b=getTileCoordinate(_0x332f46,_0xf85a6c);if(circleIntersection(player[_0x3673e9(0x126)]['x']+level[_0x3673e9(0x11a)]/0x2,player[_0x3673e9(0x126)]['y']+level[_0x3673e9(0x105)]/0x2,level['radius'],_0x24a83b[_0x3673e9(0x139)]+level[_0x3673e9(0x11a)]/0x2,_0x24a83b[_0x3673e9(0x133)]+level[_0x3673e9(0x105)]/0x2,level[_0x3673e9(0xfa)])){snapBubble();return;}}}}function stateRemoveCluster(_0x6a0ded){var _0x5acc11=_0xc376c4;if(animationstate==0x0){resetRemoved();for(var _0x53353c=0x0;_0x53353c<cluster[_0x5acc11(0x11e)];_0x53353c++){cluster[_0x53353c]['removed']=!![];}floatingclusters=findFloatingClusters();if(floatingclusters[_0x5acc11(0x11e)]>0x0)for(var _0x53353c=0x0;_0x53353c<floatingclusters[_0x5acc11(0x11e)];_0x53353c++){for(var _0x537f84=0x0;_0x537f84<floatingclusters[_0x53353c]['length'];_0x537f84++){var _0x4afb49=floatingclusters[_0x53353c][_0x537f84];_0x4afb49['shift']=0x0,_0x4afb49[_0x5acc11(0x14a)]=0x1,_0x4afb49[_0x5acc11(0x130)]=player[_0x5acc11(0x126)][_0x5acc11(0x134)];}}animationstate=0x1;}if(animationstate==0x1){var _0x324233=![];for(var _0x53353c=0x0;_0x53353c<cluster['length'];_0x53353c++){var _0x4afb49=cluster[_0x53353c];_0x4afb49['type']>=0x0&&(_0x324233=!![],_0x4afb49[_0x5acc11(0x13e)]-=_0x6a0ded*0xf,_0x4afb49[_0x5acc11(0x13e)]<0x0&&(_0x4afb49[_0x5acc11(0x13e)]=0x0),_0x4afb49[_0x5acc11(0x13e)]==0x0&&(drawAnimBubble(_0x4afb49[_0x5acc11(0x11f)]['x'],_0x4afb49[_0x5acc11(0x11f)]['y'],_0x4afb49[_0x5acc11(0x13f)]),_0x4afb49[_0x5acc11(0x13f)]=-0x1,_0x4afb49['alpha']=0x1));}for(var _0x53353c=0x0;_0x53353c<floatingclusters['length'];_0x53353c++){for(var _0x537f84=0x0;_0x537f84<floatingclusters[_0x53353c][_0x5acc11(0x11e)];_0x537f84++){var _0x4afb49=floatingclusters[_0x53353c][_0x537f84];_0x4afb49[_0x5acc11(0x13f)]>=0x0&&(_0x324233=!![],_0x4afb49[_0x5acc11(0x130)]+=_0x6a0ded*0x2bc,_0x4afb49[_0x5acc11(0x14a)]+=_0x6a0ded*_0x4afb49['velocity'],(_0x4afb49[_0x5acc11(0x13e)]==0x0||_0x4afb49['y']*level[_0x5acc11(0xf8)]+_0x4afb49['shift']>canvas['height'])&&(_0x4afb49[_0x5acc11(0x13f)]=-0x1,_0x4afb49[_0x5acc11(0x14a)]=0x0,_0x4afb49['alpha']=0x1));}}if(!_0x324233){nextBubble();var _0x477d9c=![];for(var _0x53353c=0x0;_0x53353c<level['columns'];_0x53353c++){for(var _0x537f84=0x0;_0x537f84<level[_0x5acc11(0x12b)];_0x537f84++){if(level['tiles'][_0x53353c][_0x537f84][_0x5acc11(0x13f)]!=-0x1){_0x477d9c=!![];break;}}}_0x477d9c?setGameState(gamestates[_0x5acc11(0x125)]):setGameState(gamestates['gameover']);}}}function snapBubble(){var _0x1401da=_0xc376c4,_0x4e11ee=player[_0x1401da(0x126)]['x']+level[_0x1401da(0x11a)]/0x2,_0x1fe1b1=player[_0x1401da(0x126)]['y']+level['tileheight']/0x2,_0x30a329=getGridPosition(_0x4e11ee,_0x1fe1b1);_0x30a329['x']<0x0&&(_0x30a329['x']=0x0);_0x30a329['x']>=level[_0x1401da(0x100)]&&(_0x30a329['x']=level[_0x1401da(0x100)]-0x1);_0x30a329['y']<0x0&&(_0x30a329['y']=0x0);_0x30a329['y']>=level[_0x1401da(0x12b)]&&(_0x30a329['y']=level[_0x1401da(0x12b)]-0x1);var _0x53f7c5=![];if(level[_0x1401da(0x143)][_0x30a329['x']][_0x30a329['y']][_0x1401da(0x13f)]!=-0x1)for(var _0x41bc7d=_0x30a329['y']+0x1;_0x41bc7d<level[_0x1401da(0x12b)];_0x41bc7d++){if(level[_0x1401da(0x143)][_0x30a329['x']][_0x41bc7d][_0x1401da(0x13f)]==-0x1){_0x30a329['y']=_0x41bc7d,_0x53f7c5=!![];break;}}else _0x53f7c5=!![];if(_0x53f7c5){player[_0x1401da(0x126)][_0x1401da(0x11d)]=![],level[_0x1401da(0x143)][_0x30a329['x']][_0x30a329['y']][_0x1401da(0x13f)]=player[_0x1401da(0x126)][_0x1401da(0x12f)];if(checkGameOver())return;cluster=findCluster(_0x30a329['x'],_0x30a329['y'],!![],!![],![]);if(cluster['length']>=0x3){setGameState(gamestates[_0x1401da(0x13b)]);return;}}turncounter++;if(turncounter>=0x5){addBubbles(),turncounter=0x0,rowoffset=(rowoffset+0x1)%0x2;if(checkGameOver())return;}nextBubble(),setGameState(gamestates[_0x1401da(0x125)]);}function checkGameOver(){var _0x1e639d=_0xc376c4;for(var _0x3f0d36=0x0;_0x3f0d36<level[_0x1e639d(0x100)];_0x3f0d36++){if(level[_0x1e639d(0x143)][_0x3f0d36][level[_0x1e639d(0x12b)]-0x1]['type']!=-0x1)return nextBubble(),setGameState(gamestates[_0x1e639d(0x12c)]),!![];}return![];}function addBubbles(){var _0xc8447a=_0xc376c4;for(var _0x3e9d72=0x0;_0x3e9d72<level[_0xc8447a(0x100)];_0x3e9d72++){for(var _0x59eae4=0x0;_0x59eae4<level['rows']-0x1;_0x59eae4++){level[_0xc8447a(0x143)][_0x3e9d72][level[_0xc8447a(0x12b)]-0x1-_0x59eae4][_0xc8447a(0x13f)]=level[_0xc8447a(0x143)][_0x3e9d72][level['rows']-0x1-_0x59eae4-0x1][_0xc8447a(0x13f)];}}for(var _0x3e9d72=0x0;_0x3e9d72<level[_0xc8447a(0x100)];_0x3e9d72++){level[_0xc8447a(0x143)][_0x3e9d72][0x0]['type']=getExistingColor(),level['rows']-0x1%0x2!==0x0&&_0x3e9d72===level['columns']-0x1&&(level[_0xc8447a(0x143)][_0x3e9d72][0x0][_0xc8447a(0x13f)]=-0x1);}}function findColors(){var _0x329bf7=_0xc376c4,_0x7d282a=[],_0x21ace6=[];for(var _0x71630e=0x0;_0x71630e<bubblecolors;_0x71630e++){_0x21ace6['push'](![]);}for(var _0x71630e=0x0;_0x71630e<level[_0x329bf7(0x100)];_0x71630e++){for(var _0x2fc0f2=0x0;_0x2fc0f2<level[_0x329bf7(0x12b)];_0x2fc0f2++){var _0x56f8e4=level[_0x329bf7(0x143)][_0x71630e][_0x2fc0f2];_0x56f8e4[_0x329bf7(0x13f)]>=0x0&&(!_0x21ace6[_0x56f8e4[_0x329bf7(0x13f)]]&&(_0x21ace6[_0x56f8e4[_0x329bf7(0x13f)]]=!![],_0x7d282a['push'](_0x56f8e4[_0x329bf7(0x13f)])));}}return _0x7d282a;}function findCluster(_0x2c5d67,_0xa097de,_0x4103f0,_0x4e2b26,_0x5e49a6){var _0x5f43b7=_0xc376c4;_0x4e2b26&&resetProcessed();var _0x540009=level[_0x5f43b7(0x143)][_0x2c5d67][_0xa097de],_0x31e3f8=[_0x540009];_0x540009['processed']=!![];var _0x12899e=[];while(_0x31e3f8['length']>0x0){var _0x1683ad=_0x31e3f8[_0x5f43b7(0x151)]();if(_0x1683ad[_0x5f43b7(0x13f)]==-0x1)continue;if(_0x5e49a6&&_0x1683ad[_0x5f43b7(0xfb)])continue;if(!_0x4103f0||_0x1683ad[_0x5f43b7(0x13f)]==_0x540009['type']){_0x12899e[_0x5f43b7(0xfc)](_0x1683ad);var _0x42f4e9=getNeighbors(_0x1683ad);for(var _0x50b62f=0x0;_0x50b62f<_0x42f4e9[_0x5f43b7(0x11e)];_0x50b62f++){!_0x42f4e9[_0x50b62f][_0x5f43b7(0x149)]&&(_0x31e3f8[_0x5f43b7(0xfc)](_0x42f4e9[_0x50b62f]),_0x42f4e9[_0x50b62f][_0x5f43b7(0x149)]=!![]);}}}return _0x12899e;}function findFloatingClusters(){var _0x11fe86=_0xc376c4;resetProcessed();var _0x69feee=[];for(var _0x3edc7d=0x0;_0x3edc7d<level[_0x11fe86(0x100)];_0x3edc7d++){for(var _0x3d99b4=0x0;_0x3d99b4<level[_0x11fe86(0x12b)];_0x3d99b4++){var _0x5827f0=level['tiles'][_0x3edc7d][_0x3d99b4];if(!_0x5827f0[_0x11fe86(0x149)]){var _0x5556cc=findCluster(_0x3edc7d,_0x3d99b4,![],![],!![]);if(_0x5556cc[_0x11fe86(0x11e)]<=0x0)continue;var _0x2e8a61=!![];for(var _0x335886=0x0;_0x335886<_0x5556cc[_0x11fe86(0x11e)];_0x335886++){if(_0x5556cc[_0x335886]['y']==0x0){_0x2e8a61=![];break;}}_0x2e8a61&&_0x69feee[_0x11fe86(0xfc)](_0x5556cc);}}}return _0x69feee;}function resetProcessed(){var _0x19d219=_0xc376c4;for(var _0x1b479b=0x0;_0x1b479b<level[_0x19d219(0x100)];_0x1b479b++){for(var _0x4834df=0x0;_0x4834df<level['rows'];_0x4834df++){level['tiles'][_0x1b479b][_0x4834df][_0x19d219(0x149)]=![];}}}function resetRemoved(){var _0x29a40e=_0xc376c4;for(var _0x57304c=0x0;_0x57304c<level[_0x29a40e(0x100)];_0x57304c++){for(var _0x3963e8=0x0;_0x3963e8<level[_0x29a40e(0x12b)];_0x3963e8++){level['tiles'][_0x57304c][_0x3963e8][_0x29a40e(0xfb)]=![];}}}function getNeighbors(_0x4ac3d1){var _0x13b9e5=_0xc376c4,_0x20bab6=(_0x4ac3d1['y']+rowoffset)%0x2,_0x1e274b=[],_0x1ddb54=neighborsoffsets[_0x20bab6];for(var _0x38d734=0x0;_0x38d734<_0x1ddb54[_0x13b9e5(0x11e)];_0x38d734++){var _0x20f011=_0x4ac3d1['x']+_0x1ddb54[_0x38d734][0x0],_0x3f99bd=_0x4ac3d1['y']+_0x1ddb54[_0x38d734][0x1];_0x20f011>=0x0&&_0x20f011<level[_0x13b9e5(0x100)]&&_0x3f99bd>=0x0&&_0x3f99bd<level[_0x13b9e5(0x12b)]&&_0x1e274b[_0x13b9e5(0xfc)](level[_0x13b9e5(0x143)][_0x20f011][_0x3f99bd]);}return _0x1e274b;}function drawCenterText(_0x4f1440,_0xe03990,_0x388277,_0x4c045a){var _0x4e81d8=_0xc376c4,_0x511230=context[_0x4e81d8(0x10e)](_0x4f1440);context['fillText'](_0x4f1440,_0xe03990+(_0x4c045a-_0x511230[_0x4e81d8(0x124)])/0x2,_0x388277);}function render(){var _0x3593d3=_0xc376c4,_0x8354ea=level['tileheight']/0x2;renderTiles();if(showcluster){renderCluster(cluster,0xff,0x80,0x80);for(var _0x1cdad1=0x0;_0x1cdad1<floatingclusters['length'];_0x1cdad1++){var _0x6a9abb=Math[_0x3593d3(0xfe)](0x64+0x64*_0x1cdad1/floatingclusters[_0x3593d3(0x11e)]);renderCluster(floatingclusters[_0x1cdad1],_0x6a9abb,_0x6a9abb,_0x6a9abb);}}renderPlayer();if(gamestate==gamestates[_0x3593d3(0x12c)]){}}function renderTiles(){var _0x63f6a1=_0xc376c4;for(var _0x1a450b=0x0;_0x1a450b<coordList[_0x63f6a1(0x11e)];_0x1a450b++){coordList[_0x1a450b][_0x63f6a1(0x11f)]&&coordList[_0x1a450b][_0x63f6a1(0x11f)][_0x63f6a1(0x113)][_0x63f6a1(0x118)](coordList[_0x1a450b]['movie']);}coordList=[];for(var _0xbd16b2=0x0;_0xbd16b2<level[_0x63f6a1(0x12b)];_0xbd16b2++){for(var _0x1a450b=0x0;_0x1a450b<level[_0x63f6a1(0x100)];_0x1a450b++){var _0x21db00=level['tiles'][_0x1a450b][_0xbd16b2],_0x43a616=_0x21db00[_0x63f6a1(0x14a)],_0x2c4b8e=getTileCoordinate(_0x1a450b,_0xbd16b2);_0x21db00[_0x63f6a1(0x13f)]>=0x0&&(_0x2c4b8e[_0x63f6a1(0x11f)]=drawBubble(_0x2c4b8e['tilex'],_0x2c4b8e['tiley']+_0x43a616,_0x21db00[_0x63f6a1(0x13f)]),_0x21db00[_0x63f6a1(0x11f)]=_0x2c4b8e[_0x63f6a1(0x11f)],coordList[_0x63f6a1(0xfc)](_0x2c4b8e));}}}function renderCluster(_0x4bd23a,_0x1a1677,_0x1788c8,_0x2785ca){var _0x31fc0a=_0xc376c4;for(var _0x4d0f92=0x0;_0x4d0f92<_0x4bd23a['length'];_0x4d0f92++){var _0x285a73=getTileCoordinate(_0x4bd23a[_0x4d0f92]['x'],_0x4bd23a[_0x4d0f92]['y']);context[_0x31fc0a(0x14f)]=_0x31fc0a(0x112)+_0x1a1677+','+_0x1788c8+','+_0x2785ca+')',context['fillRect'](_0x285a73[_0x31fc0a(0x139)]+level['tilewidth']/0x4,_0x285a73[_0x31fc0a(0x133)]+level['tileheight']/0x4,level[_0x31fc0a(0x11a)]/0x2,level[_0x31fc0a(0x105)]/0x2);}}function renderPlayer(){var _0x55f299=_0xc376c4;drawLine(),player[_0x55f299(0x12a)][_0x55f299(0x11f)]&&(player[_0x55f299(0x12a)][_0x55f299(0x11f)][_0x55f299(0x113)]['removeChild'](player['nextbubble'][_0x55f299(0x11f)]),player[_0x55f299(0x12a)][_0x55f299(0x11f)]=undefined),player[_0x55f299(0x126)][_0x55f299(0x11f)]&&(player['bubble']['movie']['parent']['removeChild'](player[_0x55f299(0x126)][_0x55f299(0x11f)]),player[_0x55f299(0x126)][_0x55f299(0x11f)]=undefined),player[_0x55f299(0x12a)][_0x55f299(0x11f)]=drawBubble(player[_0x55f299(0x12a)]['x'],player['nextbubble']['y'],player['nextbubble']['tiletype']),mcGame[_0x55f299(0x129)][_0x55f299(0x13d)](player['nextbubble'][_0x55f299(0x12f)]),player[_0x55f299(0x126)]['visible']&&(player[_0x55f299(0x126)]['movie']&&player['bubble']['movie'][_0x55f299(0x113)][_0x55f299(0x118)](player['bubble'][_0x55f299(0x11f)]),player['bubble'][_0x55f299(0x11f)]=drawBubble(player[_0x55f299(0x126)]['x'],player[_0x55f299(0x126)]['y'],player[_0x55f299(0x126)]['tiletype']));}function drawLine(){var _0x925d37=_0xc376c4;if(listDot)for(var _0x5bf33f=0x0;_0x5bf33f<listDot[_0x925d37(0x11e)];_0x5bf33f++){listDot[_0x5bf33f][_0x925d37(0x113)][_0x925d37(0x118)](listDot[_0x5bf33f]);}var _0x51b703=player['x']+bubbleWidth/0x2,_0x3b6368=player['y']+bubbleHeigt/0x2,_0x370bb4=player[_0x925d37(0x103)];listDot=[];for(var _0x2bdb50=0x0;_0x2bdb50<0x1f4;_0x2bdb50++){var _0x120790=drawDot(player['x'],player['y'],player[_0x925d37(0x126)][_0x925d37(0x12f)]);_0x120790['x']=_0x51b703+0.012*player[_0x925d37(0x126)][_0x925d37(0x148)]*Math[_0x925d37(0x123)](degToRad(_0x370bb4)),_0x120790['y']=_0x3b6368+0.012*player['bubble']['speed']*-0x1*Math[_0x925d37(0x138)](degToRad(_0x370bb4)),_0x120790['scale']=0.3,listDot[_0x925d37(0xfc)](_0x120790);if(_0x120790['x']<=level['x'])_0x370bb4=0xb4-_0x370bb4,_0x120790['x']=level['x'];else _0x120790['x']+level['tilewidth']>=level['x']+level['width']+0x14&&(_0x370bb4=0xb4-_0x370bb4,_0x120790['x']=level['x']+level[_0x925d37(0x124)]-level[_0x925d37(0x11a)]+bubbleWidth/0x2);var _0x2207fa=![];for(var _0x5bf33f=0x0;_0x5bf33f<level[_0x925d37(0x100)];_0x5bf33f++){for(var _0x34b226=0x0;_0x34b226<level[_0x925d37(0x12b)];_0x34b226++){var _0x170f42=level['tiles'][_0x5bf33f][_0x34b226];if(_0x170f42['type']<0x0)continue;var _0x32960b=getTileCoordinate(_0x5bf33f,_0x34b226);if(circleIntersection(_0x120790['x'],_0x120790['y'],level['radius'],_0x32960b['tilex']+level[_0x925d37(0x11a)]/0x2,_0x32960b[_0x925d37(0x133)]+level['tileheight']/0x2,level['radius'])){_0x2207fa=!![];break;}}}if(_0x2207fa)break;_0x51b703=_0x120790['x'],_0x3b6368=_0x120790['y'];}}function stateDotLine(_0x30fe6e,_0x9b451d){var _0x575f1f=_0xc376c4;if(_0x30fe6e===null)return;_0x30fe6e['x']+=_0x9b451d*player[_0x575f1f(0x126)]['speed']*Math[_0x575f1f(0x123)](degToRad(player['bubble'][_0x575f1f(0x103)])),_0x30fe6e['y']+=_0x9b451d*player[_0x575f1f(0x126)][_0x575f1f(0x148)]*-0x1*Math[_0x575f1f(0x138)](degToRad(player[_0x575f1f(0x126)][_0x575f1f(0x103)]));if(_0x30fe6e['x']<=level['x'])_0x30fe6e['angle']=0xb4-player['bubble']['angle'],_0x30fe6e['x']=level['x'];else _0x30fe6e['x']+level[_0x575f1f(0x11a)]>=level['x']+level['width']&&(_0x30fe6e['angle']=0xb4-_0x30fe6e['angle'],_0x30fe6e['x']=level['x']+level[_0x575f1f(0x124)]-level[_0x575f1f(0x11a)]);if(_0x30fe6e['y']<=level['y']){_0x30fe6e['y']=level['y'];return;}for(var _0x3ad127=0x0;_0x3ad127<level[_0x575f1f(0x100)];_0x3ad127++){for(var _0x2713c1=0x0;_0x2713c1<level[_0x575f1f(0x12b)];_0x2713c1++){var _0x196456=level[_0x575f1f(0x143)][_0x3ad127][_0x2713c1];if(_0x196456[_0x575f1f(0x13f)]<0x0)continue;var _0x3870a6=getTileCoordinate(_0x3ad127,_0x2713c1);if(circleIntersection(player[_0x575f1f(0x126)]['x']+level[_0x575f1f(0x11a)]/0x2,player[_0x575f1f(0x126)]['y']+level[_0x575f1f(0x105)]/0x2,level[_0x575f1f(0xfa)],_0x3870a6[_0x575f1f(0x139)]+level['tilewidth']/0x2,_0x3870a6[_0x575f1f(0x133)]+level[_0x575f1f(0x105)]/0x2,level[_0x575f1f(0xfa)]))return;}}}function getTileCoordinate(_0x1fc070,_0xf1de65){var _0x4ff40c=_0xc376c4,_0x2f031c=level['x']+_0x1fc070*level[_0x4ff40c(0x11a)];(_0xf1de65+rowoffset)%0x2&&(_0x2f031c+=level[_0x4ff40c(0x11a)]/0x2);var _0x410697=level['y']+_0xf1de65*level[_0x4ff40c(0xf8)];return{'tilex':_0x2f031c,'tiley':_0x410697};}function getGridPosition(_0x45c85f,_0xc60bc6){var _0x4f0386=_0xc376c4,_0x5b0f64=Math[_0x4f0386(0xfe)]((_0xc60bc6-level['y'])/level['rowheight']),_0x3746d1=0x0;(_0x5b0f64+rowoffset)%0x2&&(_0x3746d1=level[_0x4f0386(0x11a)]/0x2);var _0x52b8bb=Math[_0x4f0386(0xfe)]((_0x45c85f-_0x3746d1-level['x'])/level[_0x4f0386(0x11a)]);return{'x':_0x52b8bb,'y':_0x5b0f64};}function drawBubble(_0x2086b9,_0x17cd1b,_0x276339){var _0x3a5ba7=_0xc376c4;if(_0x276339<0x0||_0x276339>=bubblecolors)return;var _0x301ccb=getMcTile(_0x276339);return _0x301ccb['x']=_0x2086b9,_0x301ccb['y']=_0x17cd1b,_0x301ccb[_0x3a5ba7(0x124)]=level[_0x3a5ba7(0x11a)],_0x301ccb[_0x3a5ba7(0x13a)]=level[_0x3a5ba7(0x105)],container[_0x3a5ba7(0x12e)](_0x301ccb),_0x301ccb;}function drawDot(_0x5a21e3,_0x554d68,_0xa66ad0){var _0xa9b5d0=_0xc376c4;if(_0xa66ad0<0x0||_0xa66ad0>=bubblecolors)return;var _0x3e0b8a=getMcDot(_0xa66ad0);return _0x3e0b8a['x']=_0x5a21e3,_0x3e0b8a['y']=_0x554d68,_0x3e0b8a[_0xa9b5d0(0x124)]=level['tilewidth'],_0x3e0b8a['height']=level[_0xa9b5d0(0x105)],containerDot[_0xa9b5d0(0x12e)](_0x3e0b8a),_0x3e0b8a;}function drawAnimBubble(_0x3b5df3,_0x274eeb,_0x4cb068){var _0x1acd27=_0xc376c4,_0x342ff4=getMcAnim(_0x4cb068);_0x342ff4['x']=_0x3b5df3+0x12,_0x342ff4['y']=_0x274eeb+0xf,_0x342ff4['scale']=0.5,_0x342ff4[_0x1acd27(0x13d)](0x0),_0x342ff4['on'](_0x1acd27(0x131),function(){var _0x1c0b7a=_0x1acd27;_0x342ff4[_0x1c0b7a(0x13c)]==_0x342ff4[_0x1c0b7a(0x122)]-0x1&&(_0x342ff4[_0x1c0b7a(0x13d)](0x0),_0x342ff4[_0x1c0b7a(0x113)][_0x1c0b7a(0x118)](_0x342ff4));}),container[_0x1acd27(0x12e)](_0x342ff4),_0x342ff4[_0x1acd27(0x142)](0x0);}function getMcAnim(_0x2549f7){var _0x27fbbd=_0xc376c4;switch(_0x2549f7){case 0x0:return new lib['mcAnim1']();case 0x1:return new lib['mcAnim2']();case 0x2:return new lib['mcAnim3']();case 0x3:return new lib[(_0x27fbbd(0xfd))]();case 0x4:return new lib[(_0x27fbbd(0x10d))]();}}function getMcDot(_0x5f114c){var _0x30b700=_0xc376c4;switch(_0x5f114c){case 0x0:return new lib['mcDot1']();case 0x1:return new lib[(_0x30b700(0x102))]();case 0x2:return new lib['mcDot3']();case 0x3:return new lib['mcDot4']();case 0x4:return new lib[(_0x30b700(0x107))]();}return null;}function getMcTile(_0x34c5e0){var _0x525647=_0xc376c4,_0x4018c6=new lib[(_0x525647(0x10a))]();return _0x4018c6[_0x525647(0x13d)](_0x34c5e0),_0x4018c6[_0x525647(0x132)]=mcTempBubble[_0x525647(0x132)],_0x4018c6[_0x525647(0x11b)]=mcTempBubble['scaleY'],_0x4018c6;}function newGame(){var _0x37d72a=_0xc376c4;turncounter=0x0,rowoffset=0x0,setGameState(gamestates[_0x37d72a(0x125)]),createLevel(),nextBubble(),nextBubble();}function createLevel(){var _0x141c10=_0xc376c4,_0x5af42c=randRange(0x0,0x2);;for(var _0x2c190a=0x0;_0x2c190a<level[_0x141c10(0x12b)];_0x2c190a++){var _0xfbf984=randRange(0x0,bubblecolors-0x1),_0xa1b068=0x0;for(var _0x306af3=0x0;_0x306af3<level['columns'];_0x306af3++){if(_0xa1b068>=0x2){var _0x4c0ba9=randRange(0x0,bubblecolors-0x1);_0x4c0ba9==_0xfbf984&&(_0x4c0ba9=(_0x4c0ba9+0x1)%bubblecolors),_0xfbf984=_0x4c0ba9,_0xa1b068=0x0;}_0xa1b068++,_0x2c190a<level['rows']/0x2?(level['tiles'][_0x306af3][_0x2c190a]['type']=_0x2c190a<fixTitle[_0x5af42c][_0x141c10(0x11e)]&&_0x306af3<fixTitle[_0x5af42c][_0x2c190a]['length']?fixTitle[_0x5af42c][_0x2c190a][_0x306af3]:-0x1,_0x2c190a%0x2!==0x0&&_0x306af3===level[_0x141c10(0x100)]-0x1&&(level[_0x141c10(0x143)][_0x306af3][_0x2c190a][_0x141c10(0x13f)]=-0x1)):level['tiles'][_0x306af3][_0x2c190a][_0x141c10(0x13f)]=-0x1;}}}function nextBubble(){var _0xc21ca8=_0xc376c4;player[_0xc21ca8(0x12f)]=player['nextbubble'][_0xc21ca8(0x12f)],player[_0xc21ca8(0x126)][_0xc21ca8(0x12f)]=player[_0xc21ca8(0x12a)][_0xc21ca8(0x12f)],player[_0xc21ca8(0x126)]['x']=player['x'],player[_0xc21ca8(0x126)]['y']=player['y'],player[_0xc21ca8(0x126)][_0xc21ca8(0x11d)]=!![];var _0x123e0b=getExistingColor();player['nextbubble'][_0xc21ca8(0x12f)]=_0x123e0b;}function getExistingColor(){var _0x508839=_0xc376c4;existingcolors=findColors();var _0x306f55=0x0;return existingcolors[_0x508839(0x11e)]>0x0&&(_0x306f55=existingcolors[randRange(0x0,existingcolors['length']-0x1)]),_0x306f55;}function randRange(_0x928578,_0x592f6c){var _0xec021f=_0xc376c4;return Math['floor'](_0x928578+Math[_0xec021f(0xf7)]()*(_0x592f6c-_0x928578+0x1));}function shootBubble(){var _0x3f5a87=_0xc376c4;player[_0x3f5a87(0x126)]['x']=player['x'],player['bubble']['y']=player['y'],player[_0x3f5a87(0x126)][_0x3f5a87(0x103)]=player[_0x3f5a87(0x103)],player[_0x3f5a87(0x126)][_0x3f5a87(0x12f)]=player[_0x3f5a87(0x12f)],setGameState(gamestates[_0x3f5a87(0x121)]);}function circleIntersection(_0x18e711,_0x388cc8,_0x5104d2,_0x5f4753,_0x35ad11,_0x81eca3){var _0x5e0428=_0x18e711-_0x5f4753,_0x4e0107=_0x388cc8-_0x35ad11,_0x2bac18=Math['sqrt'](_0x5e0428*_0x5e0428+_0x4e0107*_0x4e0107);if(_0x2bac18<_0x5104d2+_0x81eca3)return!![];return![];}function radToDeg(_0x564c99){return _0x564c99*(0xb4/Math['PI']);}function degToRad(_0x2129de){return _0x2129de*(Math['PI']/0xb4);}function onMouseMove(_0x2388a2){var _0x132c54=_0xc376c4;if(isShowInstall)return;var _0x572a22=getMousePos(canvas,_0x2388a2),_0x200ae2=mcGame[_0x132c54(0x14e)](_0x572a22['x'],_0x572a22['y']),_0x45e1e9=radToDeg(Math['atan2'](player['y']+level[_0x132c54(0x105)]/0x2-_0x200ae2['y'],_0x200ae2['x']-(player['x']+level[_0x132c54(0x11a)]/0x2)));_0x45e1e9<0x0&&(_0x45e1e9=0xb4+(0xb4+_0x45e1e9));var _0x16cb10=0x8,_0x3dde07=0xac;_0x45e1e9>0x5a&&_0x45e1e9<0x10e?_0x45e1e9>_0x3dde07&&(_0x45e1e9=_0x3dde07):(_0x45e1e9<_0x16cb10||_0x45e1e9>=0x10e)&&(_0x45e1e9=_0x16cb10),player[_0x132c54(0x103)]=_0x45e1e9;}function onMouseDown(_0x59197a){var _0x1d8435=_0xc376c4;if(isShowInstall)return;var _0x500e96=getMousePos(canvas,_0x59197a);if(gamestate==gamestates[_0x1d8435(0x125)])countShooter--,updateTxtShooter(),shootBubble(),countShooter===0x0&&showInstallGame();else gamestate==gamestates[_0x1d8435(0x12c)]&&showInstallGame();}function showInstallGame(){var _0x5093b3=_0xc376c4;createjs[_0x5093b3(0x147)]['play'](_0x5093b3(0x141)),isShowInstall=!![],mcGame['btnInstall']['visible']=!![];var _0x546e19=mcGame[_0x5093b3(0x14c)]['y'];mcGame[_0x5093b3(0x14c)]['y']+=0xc8,createjs[_0x5093b3(0x145)]['get'](mcGame[_0x5093b3(0x14c)],{'override':!![]})['to']({'y':_0x546e19},0x1f4),mcGame[_0x5093b3(0x14c)][_0x5093b3(0x108)](_0x5093b3(0x14b),openGame);}function openGame(){var _0x568239=_0xc376c4,_0x549d4d=navigator[_0x568239(0x119)][_0x568239(0x128)](/(iPad|iPhone|iPod)/i)?!![]:![];if(_0x549d4d){window[_0x568239(0xf9)](_0x568239(0x10b));return;}var _0xe9b2b4=navigator[_0x568239(0x119)][_0x568239(0x104)](),_0x505aa5=_0xe9b2b4['indexOf'](_0x568239(0x115))>-0x1;_0x505aa5?window[_0x568239(0xf9)]('https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US'):window[_0x568239(0xf9)](_0x568239(0x10b));}function getMousePos(_0x2c50f4,_0x5cbe7a){var _0x4795d8=_0xc376c4,_0x2d749b=_0x2c50f4[_0x4795d8(0x12d)]();return{'x':Math['round']((_0x5cbe7a[_0x4795d8(0x146)]-_0x2d749b['left'])/(_0x2d749b[_0x4795d8(0x109)]-_0x2d749b[_0x4795d8(0x127)])*_0x2c50f4[_0x4795d8(0x124)]),'y':Math['round']((_0x5cbe7a[_0x4795d8(0x116)]-_0x2d749b['top'])/(_0x2d749b[_0x4795d8(0x135)]-_0x2d749b[_0x4795d8(0x11c)])*_0x2c50f4[_0x4795d8(0x13a)])};}
+var lib, canvas, mcGame, mcMenu, mcLine, coordList = [];
+var container = new createjs.MovieClip();
+var containerDot = new createjs.MovieClip();
+var lastframe = 0;
+var fpstime = 0;
+var framecount = 0;
+var bubbleWidth = 36;
+var bubbleHeigt = 30;
+var countShooter = 1000;
+var listDot = [];
+var nearCluster;
+var dropCluster = [];
+var mcTempBubble;
+var isShowInstall = false;
+
+var initialized = false;
+
+
+var fixTitle=[
+    [
+        [4,0,0,4,4,4,4,4,0,0,4],
+        [4,0,0,4,3,3,4,0,0,4,4],
+        [4,4,0,0,4,3,4,0,0,4,4],
+        [3,4,0,0,4,4,0,0,4,4,3],
+        [3,4,4,0,0,4,0,0,4,4,3],
+        [3,4,4,0,0,0,0,4,4,3,3],
+        [3,3,4,4,0,0,0,4,4,3,3],
+        [3,1,4,4,0,0,4,4,3,3,1],
+        [3,1,1,4,4,0,4,4,1,1,3],
+        [1,1,1,4,4,4,4,1,1,1,1],
+        [1,1,1,1,4,4,4,1,1,1,1],
+        [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ],
+    [
+        [1,1,1,1,1,0,1,1,1,1,1],
+        [1,1,1,1,0,0,1,1,1,1,1],
+        [3,3,4,4,0,0,0,4,4,3,3],
+        [3,4,4,4,0,0,4,4,4,3,3],
+        [3,4,4,4,2,0,2,4,4,4,3],
+        [4,4,4,2,2,2,2,4,4,4,3],
+        [3,4,4,4,2,2,2,4,4,4,3],
+        [3,4,4,4,2,2,4,4,4,3,3],
+        [3,3,4,4,4,2,4,4,4,3,3],
+        [3,3,4,4,4,4,4,4,3,3,3],
+        [3,3,3,4,4,4,4,4,3,3,3],
+        [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ], [
+        [4,4,4,4,4,4,4,4,4,4,4],
+        [4,4,4,4,4,4,4,4,4,4,4],
+        [1,1,1,1,1,1,1,1,1,1,1],
+        [0,0,3,3,1,1,3,3,2,2,2],
+        [0,0,3,3,3,1,3,3,3,2,2],
+        [0,3,3,3,3,3,3,3,3,2,2],
+        [0,0,3,3,3,3,3,3,3,2,2],
+        [0,0,3,3,3,3,3,3,2,2,2],
+        [0,0,0,3,3,3,3,3,2,2,2],
+        [0,0,0,3,3,3,3,2,2,2,2],
+        [0,0,0,0,3,3,3,2,2,2,2],
+        [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ]
+   
+]
+
+// Level
+var level = {
+    x: 2,           // X position
+    y: 0,          // Y position
+    width: 0,       // Width, gets calculated
+    height: 0,      // Height, gets calculated
+    columns: 11,    // Number of tile columns
+    rows: 100,       // Number of tile rows
+    tilewidth: 28,  // Visual width of a tile
+    tileheight: 30, // Visual height of a tile
+    rowheight: 25, //34,  // Height of a row
+    radius: 15,     // Bubble collision radius
+    tiles: []       // The two-dimensional tile array  40 30
+};
+
+// Define a tile class
+var Tile = function(x, y, type, shift) {
+    this.movie = null;
+    this.x = x;
+    this.y = y;
+    this.type = type;
+    this.removed = false;
+    this.shift = shift;
+    this.velocity = 0;
+    this.alpha = 1;
+    this.processed = false;
+};
+
+// Player
+var player = {
+    x: 147,
+    y: 372,
+    angle: 0,
+    tiletype: 0,
+    bubble: {
+                movie:null,
+                x: 0,
+                y: 0,
+                angle: 0,
+                speed: 1000,
+                dropspeed: 10,
+                tiletype: 0,
+                visible: false
+            },
+    nextbubble: {
+                    movie:null,
+                    x: 0,
+                    y: 0,
+                    tiletype: 0
+                }
+};
+
+// Neighbor offset table
+var neighborsoffsets = [[[1, 0], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1]], // Even row tiles
+                        [[1, 0], [1, 1], [0, 1], [-1, 0], [0, -1], [1, -1]]];  // Odd row tiles
+
+// Number of different colors
+var bubblecolors = 5;
+
+// Game states
+var gamestates = { init: 0, ready: 1, shootbubble: 2, removecluster: 3, gameover: 4, idle:5 };
+var gamestate = gamestates.init;
+
+var turncounter = 0;
+var rowoffset = 0;
+
+// Animation variables
+var animationstate = 0;
+var animationtime = 0;
+
+// Clusters
+var showcluster = false;
+var cluster = [];
+var floatingclusters = [];
+
+// Images
+var images = [];
+var bubbleimage;
+
+// Image loading global variables
+var loadcount = 0;
+var loadtotal = 0;
+var preloaded = false;
+
+function showGame(_lib, _canvas, _mcGame, _mcMenu){
+    lib = _lib;
+    canvas = _canvas;
+    mcGame = _mcGame;
+    mcMenu = _mcMenu;
+
+    mcGame.visible = true;
+    mcMenu.visible = false;
+    // mcMenu.mcBubble.gotoAndStop(0);
+    // mcMenu.mcOuter.gotoAndStop(0);
+    this.initgame();
+}
+
+function showContinue(){
+    mcGame.visible = false;
+    mcMenu.visible = true;
+    mcMenu.mcBubble.gotoAndStop(0);
+    mcMenu.mcOuter.gotoAndStop(0);
+    mcMenu.btnContinue.addEventListener("click", onClickContinue);    
+}
+
+function onClickContinue(){
+    this.openGame();
+}
+
+// Initialize the game
+function initgame() {
+    mcGame.mcOuter.gotoAndStop(0);
+    mcTempBubble = mcGame.mcBubble;
+    mcTempBubble.gotoAndStop(0);
+    mcTempBubble.visible = false;
+    mcTempBubble.parent.removeChild(mcTempBubble);
+    updateTxtShooter();
+
+    mcGame.addChild(containerDot);
+    mcGame.addChild(container);
+
+    // Add mouse events
+    canvas.addEventListener("mousemove", onMouseMove);
+    canvas.addEventListener("mousedown", onMouseDown);
+    
+    // Initialize the two-dimensional tile array
+    for (var i=0; i<level.columns; i++) {
+        level.tiles[i] = [];
+        for (var j=0; j<level.rows; j++) {
+            // Define a tile type and a shift parameter for animation
+            level.tiles[i][j] = new Tile(i, j, 0, 0);
+        }
+    }
+    
+    level.width = level.columns * level.tilewidth + level.tilewidth/2;
+    level.height = (level.rows-1) * level.rowheight + level.tileheight;
+    
+    // Init the player
+    player.x = mcTempBubble.x;//level.x + level.width/2 - level.tilewidth/2;
+    player.y = mcTempBubble.y;//level.y + level.height;
+    player.angle = 90;
+    player.tiletype = 0;
+    
+    player.nextbubble.x = 69;
+    player.nextbubble.y = 414;
+    
+    newGame();
+    main(0);
+}
+
+function  updateTxtShooter(){
+    mcGame.txtShooter.text = countShooter;
+    mcGame.txtShooter.visible = false;
+}
+
+// Main loop
+function main(tframe) {
+    // Request animation frames
+    window.requestAnimationFrame(main);
+    update(tframe);
+    render();
+}
+
+// Update the game state
+function update(tframe) {
+    var dt = (tframe - lastframe) / 1000;
+    lastframe = tframe;
+    // stateDotLine(dt);
+    if (gamestate == gamestates.ready) {
+        // Game is ready for player input
+    } else if (gamestate == gamestates.shootbubble) {
+        // Bubble is moving
+        stateShootBubble(dt);
+    } else if (gamestate == gamestates.removecluster) {
+        // Remove cluster and drop tiles
+        stateRemoveCluster(dt);
+    }
+}
+
+function setGameState(newgamestate) {
+    gamestate = newgamestate;
+    if (gamestate == gamestates.gameover) showInstallGame();
+    animationstate = 0;
+    animationtime = 0;
+}
+
+
+function stateShootBubble(dt) {
+    // Bubble is moving
+    // Move the bubble in the direction of the mouse
+    player.bubble.x += dt * player.bubble.speed * Math.cos(degToRad(player.bubble.angle));
+    player.bubble.y += dt * player.bubble.speed * -1*Math.sin(degToRad(player.bubble.angle));
+    
+    // Handle left and right collisions with the level
+    if (player.bubble.x <= level.x) {
+        // Left edge
+        player.bubble.angle = 180 - player.bubble.angle;
+        player.bubble.x = level.x;
+    } else if (player.bubble.x + level.tilewidth >= level.x + level.width) {
+        // Right edge
+        player.bubble.angle = 180 - player.bubble.angle;
+        player.bubble.x = level.x + level.width - level.tilewidth;
+    }
+
+    // Collisions with the top of the level
+    if (player.bubble.y <= level.y) {
+        // Top collision
+        player.bubble.y = level.y;
+        snapBubble();
+        return;
+    }
+    
+    // Collisions with other tiles
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            var tile = level.tiles[i][j];
+            
+            // Skip empty tiles
+            if (tile.type < 0) {
+                continue;
+            }
+            
+            // Check for intersections
+            var coord = getTileCoordinate(i, j);
+            if (circleIntersection(player.bubble.x + level.tilewidth/2,
+                                    player.bubble.y + level.tileheight/2,
+                                    level.radius,
+                                    coord.tilex + level.tilewidth/2,
+                                    coord.tiley + level.tileheight/2,
+                                    level.radius)) {
+                                    
+                // Intersection with a level bubble
+                snapBubble();
+                return;
+            }
+        }
+    }
+}
+
+
+
+function stateRemoveCluster(dt) {
+    renderPlayer();
+
+    if (animationstate == 0) {
+        resetRemoved();
+        
+        for (var i=0; i<cluster.length; i++) {
+            cluster[i].removed = true;
+        }
+        
+        floatingclusters = findFloatingClusters();
+        
+        if (floatingclusters.length > 0) {
+            for (var i=0; i<floatingclusters.length; i++) {
+                for (var j=0; j<floatingclusters[i].length; j++) {
+                    var tile = floatingclusters[i][j];
+                    tile.shift = 0;
+                    tile.shift = 1;
+                    tile.velocity = player.bubble.dropspeed;
+                }
+            }
+        }
+        
+        animationstate = 1;
+    }
+    
+    if (animationstate == 1) {
+        var tilesleft = false;
+        for (var i=0; i<dropCluster.length; i++) {
+            if(dropCluster[i] === undefined) continue;
+            for(var j=0;j<dropCluster[i].length; j++){
+                var tile = dropCluster[i][j];
+                
+                if (tile.type >= 0) {
+                    tilesleft = true;
+                    var t = (i === 0) ? 0 : i  * 1.5; 
+                    tile.alpha -= dt * 15 / t;
+                    if (tile.alpha < 0) {
+                        tile.alpha = 0;
+                    }
+
+                    if (tile.alpha == 0) {
+                        drawAnimBubble(tile.movie.x, tile.movie.y, tile.type);
+                        tile.type = -1;
+                        tile.alpha = 1;
+                    }
+                }
+            }
+        }
+
+
+        // Drop bubbles
+        for (var i=0; i<floatingclusters.length; i++) {
+            for (var j=0; j<floatingclusters[i].length; j++) {
+                var tile = floatingclusters[i][j];
+                if (tile.type >= 0) {
+                    tilesleft = true;
+                    tile.velocity += dt * randRange(20, 1500);;
+                    tile.shift += dt * tile.velocity;
+                    if (tile.alpha == 0 || (tile.y * level.rowheight + tile.shift > canvas.height)) {
+                        tile.type = -1;
+                        tile.shift = 0;
+                        tile.alpha = 1;
+                    }
+                }
+
+            }
+        }
+        
+        if (!tilesleft) {
+            // Next bubble
+            nextBubble();
+            var tilefound = false
+            for (var i=0; i<level.columns; i++) {
+                for (var j=0; j<level.rows; j++) {
+                    if (level.tiles[i][j].type != -1) {
+                        tilefound = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (tilefound) {
+                setGameState(gamestates.ready);
+            } else {
+                setGameState(gamestates.gameover);
+            }
+        }
+    }
+}
+
+function snapBubble() {
+    var centerx = player.bubble.x + level.tilewidth/2;
+    var centery = player.bubble.y + level.tileheight/2;
+
+    var gridpos = getGridPosition(centerx, centery);
+    if (gridpos.x < 0) {
+        gridpos.x = 0;
+    }
+        
+    if (gridpos.x >= level.columns) {
+        gridpos.x = level.columns - 1;
+    }
+
+    if (gridpos.y < 0) {
+        gridpos.y = 0;
+    }
+        
+    if (gridpos.y >= level.rows) {
+        gridpos.y = level.rows - 1;
+    }
+
+    var addtile = false;
+    if (level.tiles[gridpos.x][gridpos.y].type != -1) {
+        for (var newrow=gridpos.y+1; newrow<level.rows; newrow++) {
+            if (level.tiles[gridpos.x][newrow].type == -1) {
+                gridpos.y = newrow;
+                addtile = true;
+                break;
+            }
+        }
+    } else {
+        addtile = true;
+    }
+    if (addtile) {
+        player.bubble.visible = false;
+        level.tiles[gridpos.x][gridpos.y].type = player.bubble.tiletype;
+        if (checkGameOver()) {
+            return;
+        }
+        cluster = findCluster(gridpos.x, gridpos.y, true, true, false);
+        nearCluster = findNearCluster(gridpos.x, gridpos.y, true, true, false);
+
+        statusNearClusterAnim();
+        updatePotisionTitle();
+
+        if (cluster.length >= 3) {
+            setGameState(gamestates.idle);
+            dropCluster = findDropCluster(cluster);
+            TweenMax.delayedCall(0.4, function(){
+                setGameState(gamestates.removecluster);
+            }.bind(this));
+           
+            return;
+        }
+    }
+    turncounter++;
+    if (turncounter >= 5) {
+        addBubbles();
+        turncounter = 0;
+        rowoffset = (rowoffset + 1) % 2;
+        if (checkGameOver()) {
+            return;
+        }
+    }
+    nextBubble();
+    setGameState(gamestates.ready);
+}
+
+function updatePotisionTitle(){
+    var max = getMaxRowHasBubble();
+    var vy = 0;
+    if(max <= 11){
+        vy = 0;
+    }else{
+        vy = -(max - 11) * (bubbleHeigt - 10);
+    }
+
+    
+    TweenMax.to(level, 1, {y: vy})
+
+    console.log("1111");
+}
+
+function getMaxRowHasBubble(){
+    var maxRow = 0;
+
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            var tile = level.tiles[i][j];
+            if (tile.type >= 0 && maxRow < j) {
+                maxRow = j;
+            }
+        }
+    }
+
+    return maxRow;
+}
+
+function findNearCluster(tx, ty, matchtype, reset, skipremoved) {
+    if (reset) {
+        resetProcessed();
+    }
+    var targettile = level.tiles[tx][ty];
+    var toprocess = [targettile];
+    targettile.processed = true;
+    var foundcluster = [];
+
+    while (toprocess.length > 0) {
+        var currenttile = toprocess.pop();
+        if (currenttile.type == -1) {
+            continue;
+        }
+        if (skipremoved && currenttile.removed) {
+            continue;
+        }
+        if(Math.abs(currenttile.y - targettile.y) > 3)  continue;
+        if(Math.abs(currenttile.x - targettile.x) > 3)  continue;
+        if(Math.abs(currenttile.y - targettile.y) > 2 && Math.abs(currenttile.x - targettile.x) > 1) continue;
+        if(Math.abs(currenttile.y - targettile.y) > 2 && Math.abs(currenttile.x - targettile.x) > 2) continue;
+        if(Math.abs(currenttile.y - targettile.y) > 1 && Math.abs(currenttile.x - targettile.x) > 2) continue;
+
+        // if(Math.abs(currenttile.x - targettile.x) > 2 ||  Math.abs(currenttile.y - targettile.y) > 3)
+        //     continue;
+
+        foundcluster.push(currenttile);
+        var neighbors = getNeighbors(currenttile);
+        for (var i=0; i<neighbors.length; i++) {
+            if (!neighbors[i].processed) {
+                toprocess.push(neighbors[i]);
+                neighbors[i].processed = true;
+            }
+        }
+        // }
+    }
+
+    return foundcluster;
+}
+
+
+function statusNearClusterAnim() {
+    renderTiles();
+    if(nearCluster === undefined || nearCluster.length === 0) return;
+    var direct = {x:0, y:0}; // 1: top, left;  2: top-right; 3: bottom-left; 4: bottom-right
+    var startCluster = nearCluster[0];
+    var movie = startCluster.movie;
+    if(movie.x > player.bubble.movie.x) direct = {x:1,y:-1};
+    else  direct = {x:-1,y:-1};
+    var newx = movie.x + direct.x * (Math.abs(0 - 5) * 0.4);
+    var newy = movie.y + direct.y * (Math.abs(0 - 5) * 0.4);
+    movie.tempX = movie.x;
+    movie.tempY = movie.y;
+    TweenMax.to(movie, 0.2, {x: newx, y: newy})
+    TweenMax.to(movie, 0.2, {x: movie.tempX, y: movie.tempY, delay: 0.2});
+
+    for(var i = 1; i< nearCluster.length;i++) {
+        var mc = nearCluster[i];
+        var vx = startCluster.x - mc.x;
+        var vy = startCluster.y - mc.y;
+        if(vx ===0) vx = 1;
+        if(vx > 0 && vy > 0) direct = {x:-1,y:-1};
+        if(vx > 0 && vy < 0) direct = {x:-1,y:1};
+        if(vx < 0 && vy > 0) direct = {x:1,y:-1};
+        if(vx < 0 && vy < 0) direct = {x:1,y:1};
+
+        var near = (Math.abs(vx) > Math.abs(vy)) ? Math.abs(vx) : Math.abs(vy);
+        
+        // console.log("x:  " + vx + "  y:  " + vy + "  " + direct + "  " + near);
+        var newx = mc.movie.x + direct.x * (Math.abs(near - 4) * 0.4);
+        var newy = mc.movie.y + direct.y * (Math.abs(near - 4) * 0.4);
+        mc.movie.tempX = mc.movie.x;
+        mc.movie.tempY = mc.movie.y;
+
+        TweenMax.to(mc.movie, 0.2, {x: newx, y: newy})
+        TweenMax.to(mc.movie, 0.2, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.2});
+    }
+}
+
+function findDropCluster(foundcluster){
+    if(foundcluster.length > 1){
+        dropCluster = [];
+        var mcFirst = foundcluster[0];
+        for(var i = 0; i < foundcluster.length; i++) {
+            var mc = foundcluster[i];
+            var x = (mc.x - mcFirst.x);
+            var y = (mc.y - mcFirst.y);
+            var index = 0;
+            if(Math.round(x) > Math.round(y)) index = Math.abs(y);
+            else index = Math.abs(x);
+
+            if(dropCluster[index] === undefined) dropCluster[index] = [];
+            dropCluster[index].push(mc);
+        }
+    }
+
+    return dropCluster;
+}
+
+function checkGameOver() {
+    for (var i=0; i<level.columns; i++) {
+        if (level.tiles[i][level.rows-1].type != -1) {
+            nextBubble();
+            setGameState(gamestates.gameover);
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+function addBubbles() {
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows-1; j++) {
+            level.tiles[i][level.rows-1-j].type = level.tiles[i][level.rows-1-j-1].type;
+        }
+    }
+    for (var i=0; i<level.columns; i++) {
+        level.tiles[i][0].type = getExistingColor();
+        if (level.rows - 1 % 2 !== 0 && i===level.columns-1) {
+            level.tiles[i][0].type = -1;
+        }
+    }
+}
+function findColors() {
+    var foundcolors = [];
+    var colortable = [];
+    for (var i=0; i<bubblecolors; i++) {
+        colortable.push(false);
+    }
+
+    // for (var i=0; i<level.columns; i++) {
+    //     for (var j=level.rows-1; j>=0; j--) {
+    //         var tile = level.tiles[i][j];
+    //         if (tile.type >= 0) {
+    //             if (!colortable[tile.type]) {
+    //                 colortable[tile.type] = true;
+    //                 foundcolors.push(tile.type);  
+    //             }
+    //             break;
+    //         }
+
+    //     }
+    // }
+
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            var tile = level.tiles[i][j];
+            if (tile.type >= 0) {
+                if (!colortable[tile.type]) {
+                    colortable[tile.type] = true;
+                    foundcolors.push(tile.type);
+                }
+            }
+        }
+    }
+    
+    return foundcolors;
+}
+
+function findCluster(tx, ty, matchtype, reset, skipremoved) {
+    if (reset) {
+        resetProcessed();
+    }
+    var targettile = level.tiles[tx][ty];
+    var toprocess = [targettile];
+    targettile.processed = true;
+    var foundcluster = [];
+
+    while (toprocess.length > 0) {
+        var currenttile = toprocess.pop();
+        if (currenttile.type == -1) {
+            continue;
+        }
+        if (skipremoved && currenttile.removed) {
+            continue;
+        }
+        if (!matchtype || (currenttile.type == targettile.type)) {
+            foundcluster.push(currenttile);
+            var neighbors = getNeighbors(currenttile);
+            for (var i=0; i<neighbors.length; i++) {
+                if (!neighbors[i].processed) {
+                    toprocess.push(neighbors[i]);
+                    neighbors[i].processed = true;
+                }
+            }
+        }
+    }
+
+    return foundcluster;
+}
+
+function findFloatingClusters() {
+    resetProcessed();
+    var foundclusters = [];
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            var tile = level.tiles[i][j];
+            if (!tile.processed) {
+                var foundcluster = findCluster(i, j, false, false, true);
+                if (foundcluster.length <= 0) {
+                    continue;
+                }
+                var floating = true;
+                for (var k=0; k<foundcluster.length; k++) {
+                    if (foundcluster[k].y == 0) {
+                        floating = false;
+                        break;
+                    }
+                }
+                
+                if (floating) {
+                    foundclusters.push(foundcluster);
+                }
+            }
+        }
+    }
+    
+    return foundclusters;
+}
+function resetProcessed() {
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            level.tiles[i][j].processed = false;
+        }
+    }
+}
+function resetRemoved() {
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            level.tiles[i][j].removed = false;
+        }
+    }
+}
+
+function getNeighbors(tile) {
+    var tilerow = (tile.y + rowoffset) % 2; // Even or odd row
+    var neighbors = [];
+    var n = neighborsoffsets[tilerow];
+    if(n===undefined)  neighbors; 
+    for (var i=0; i<n.length; i++) {
+        var nx = tile.x + n[i][0];
+        var ny = tile.y + n[i][1];
+        if (nx >= 0 && nx < level.columns && ny >= 0 && ny < level.rows) {
+            neighbors.push(level.tiles[nx][ny]);
+        }
+    }
+    
+    return neighbors;
+}
+
+function drawCenterText(text, x, y, width) {
+    var textdim = context.measureText(text);
+    context.fillText(text, x + (width-textdim.width)/2, y);
+}
+
+function render() {
+    var yoffset =  level.tileheight/2;
+    // renderTiles();
+    if (showcluster) {
+        renderCluster(cluster, 255, 128, 128);
+        
+        for (var i=0; i<floatingclusters.length; i++) {
+            var col = Math.floor(100 + 100 * i / floatingclusters.length);
+            renderCluster(floatingclusters[i], col, col, col);
+        }
+    }
+    
+    renderPlayer();
+    if (gamestate == gamestates.removecluster){
+        renderTiles();
+    }
+    if (gamestate == gamestates.gameover) {
+    }
+}
+function renderTiles() {
+    for(var i=0;i<coordList.length;i++){
+        if(coordList[i].movie){
+            coordList[i].movie.parent.removeChild(coordList[i].movie);
+        }
+    }
+
+    coordList = [];
+
+    for (var j=0; j<level.rows; j++) {
+        for (var i=0; i<level.columns; i++) {
+            var tile = level.tiles[i][j];
+            var shift = tile.shift;
+            var coord = getTileCoordinate(i, j);
+            if (tile.type >= 0) {              
+                coord.movie = drawBubble(coord.tilex, coord.tiley + shift, tile.type);
+                tile.movie = coord.movie;
+                coordList.push(coord);
+            }
+        }
+    }
+}
+
+function renderCluster(cluster, r, g, b) {
+    for (var i=0; i<cluster.length; i++) {
+        var coord = getTileCoordinate(cluster[i].x, cluster[i].y);
+        context.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        context.fillRect(coord.tilex+level.tilewidth/4, coord.tiley+level.tileheight/4, level.tilewidth/2, level.tileheight/2);
+    }
+}
+function renderPlayer() {
+    drawLine();
+
+    if(player.nextbubble.movie){
+        player.nextbubble.movie.parent.removeChild(player.nextbubble.movie);
+        player.nextbubble.movie = undefined;
+    }
+
+    if(player.bubble.movie){
+        player.bubble.movie.parent.removeChild(player.bubble.movie);
+        player.bubble.movie = undefined;
+    }
+
+    // player.nextbubble.movie = drawBubble(player.nextbubble.x, player.nextbubble.y, player.nextbubble.tiletype);
+    mcGame.mcOuter.gotoAndStop(player.nextbubble.tiletype)
+
+    if (player.bubble.visible) {
+        if(player.bubble.movie){
+            player.bubble.movie.parent.removeChild(player.bubble.movie);
+        }
+        player.bubble.movie =  drawBubble(player.bubble.x, player.bubble.y, player.bubble.tiletype);
+    }
+    
+}
+
+function drawLine(){
+    if(listDot){
+        for(var i=0;i<listDot.length;i++){
+            listDot[i].parent.removeChild(listDot[i]);
+        }
+    }
+
+    var px = player.x + bubbleWidth/2;
+    var py = player.y + bubbleHeigt/2;
+
+    var angle = player.angle;
+    listDot = [];
+
+    for(var k = 0;k<500;k++){
+        var mcDot =  drawDot(player.x, player.y, player.bubble.tiletype);
+        mcDot.x = px + 0.012 * player.bubble.speed * Math.cos(degToRad(angle));
+        mcDot.y = py + 0.012 * player.bubble.speed * -1 *Math.sin(degToRad(angle));
+        mcDot.scale = 0.3;
+        listDot.push(mcDot);
+        
+        if (mcDot.x <= level.x) {
+            angle = 180 - angle;
+            mcDot.x = level.x;
+        } else if (mcDot.x + level.tilewidth >= level.x + level.width + 20) {
+            angle = 180 - angle;
+            mcDot.x = level.x + level.width - level.tilewidth + bubbleWidth/2;
+        }
+
+        var isCollisionsTiles = false;
+        for (var i=0; i<level.columns; i++) {
+            for (var j=0; j<level.rows; j++) {
+                var tile = level.tiles[i][j];
+                if (tile.type < 0) {
+                    continue;
+                }
+                var coord = getTileCoordinate(i, j);
+                if (circleIntersection(mcDot.x,
+                                        mcDot.y,
+                                        level.radius,
+                                        coord.tilex + level.tilewidth/2,
+                                        coord.tiley + level.tileheight/2,
+                                        level.radius)) {
+                                        
+                    isCollisionsTiles = true;
+                    break;
+                }
+            }
+        }
+
+        if(isCollisionsTiles) break;
+
+        px = mcDot.x;
+        py = mcDot.y;
+        
+    }
+
+}
+
+function stateDotLine(mcDot, dt){
+    if(mcDot === null) return;
+
+    mcDot.x += dt * player.bubble.speed * Math.cos(degToRad(player.bubble.angle));
+    mcDot.y += dt * player.bubble.speed * -1 * Math.sin(degToRad(player.bubble.angle));
+     if (mcDot.x <= level.x) {
+        // Left edge
+        mcDot.angle = 180 - player.bubble.angle;
+        mcDot.x = level.x;
+    } else if (mcDot.x + level.tilewidth >= level.x + level.width) {
+        // Right edge
+        mcDot.angle = 180 - mcDot.angle;
+        mcDot.x = level.x + level.width - level.tilewidth;
+    }
+    if (mcDot.y <= level.y) {
+        mcDot.y = level.y;
+        return;
+    }
+    
+    // Collisions with other tiles
+    for (var i=0; i<level.columns; i++) {
+        for (var j=0; j<level.rows; j++) {
+            var tile = level.tiles[i][j];
+            if (tile.type < 0) {
+                continue;
+            }
+            var coord = getTileCoordinate(i, j);
+            if (circleIntersection(player.bubble.x + level.tilewidth/2,
+                                    player.bubble.y + level.tileheight/2,
+                                    level.radius,
+                                    coord.tilex + level.tilewidth/2,
+                                    coord.tiley + level.tileheight/2,
+                                    level.radius)) {
+                return;
+            }
+        }
+    }
+}
+
+
+function getTileCoordinate(column, row) {
+    var tilex = level.x + column * level.tilewidth;
+    if ((row + rowoffset) % 2) {
+        tilex += level.tilewidth/2;
+    }
+    var tiley = level.y + row * level.rowheight;
+    return { tilex: tilex, tiley: tiley };
+}
+
+function getGridPosition(x, y) {
+    var gridy = Math.floor((y - level.y) / level.rowheight);
+    var xoffset = 0;
+    if ((gridy + rowoffset) % 2) {
+        xoffset = level.tilewidth / 2;
+    }
+    var gridx = Math.floor(((x - xoffset) - level.x) / level.tilewidth);
+    
+    return { x: gridx, y: gridy };
+}
+
+function drawBubble(x, y, index) {
+    if (index < 0 || index >= bubblecolors)
+        return;
+    
+    var bubbleImg = getMcTile(index);
+    bubbleImg.x = x;
+    bubbleImg.y = y;
+    bubbleImg.width = level.tilewidth;
+    bubbleImg.height = level.tileheight;
+    container.addChild(bubbleImg)
+    return bubbleImg;
+}
+
+function drawDot(x, y, index) {
+    if (index < 0 || index >= bubblecolors)
+        return;
+    
+    var bubbleImg = getMcDot(index);
+    bubbleImg.x = x;
+    bubbleImg.y = y;
+    bubbleImg.width = level.tilewidth;
+    bubbleImg.height = level.tileheight;
+    containerDot.addChild(bubbleImg)
+
+    return bubbleImg;
+}
+
+function drawAnimBubble(x, y, index){
+    var anim = getMcAnim(index);
+    anim.x = x + 18;
+    anim.y = y + 15;
+    anim.scale = 0.7;
+    anim.gotoAndStop(0);
+    anim.on("tick", function() {
+        if (anim.currentFrame == anim.totalFrames - 1) { 
+            anim.gotoAndStop(0);
+            anim.parent.removeChild(anim);
+        }
+    });
+    container.addChild(anim);
+    anim.gotoAndPlay(0);
+
+}
+
+function getMcAnim(index){
+    switch(index){
+        case 0: return new lib.mcAnim1();
+        case 1: return new lib.mcAnim2();
+        case 2: return new lib.mcAnim3();
+        case 3: return new lib.mcAnim4();
+        case 4: return new lib.mcAnim5();
+    }
+}
+
+function getMcDot(index){
+    switch(index){
+        case 0: return new lib.mcDot1();
+        case 1: return new lib.mcDot2();
+        case 2: return new lib.mcDot3();
+        case 3: return new lib.mcDot4();
+        case 4: return new lib.mcDot5();
+    }
+    return null;
+}
+
+function getMcTile(index){
+    var tile = new lib.mcBubble();
+    tile.gotoAndStop(index);
+    tile.scaleX = mcTempBubble.scaleX;
+    tile.scaleY = mcTempBubble.scaleY;
+    return tile;
+}
+
+function newGame() {
+    turncounter = 0;
+    rowoffset = 0;
+    setGameState(gamestates.ready);
+    createLevel();
+    nextBubble();
+    nextBubble();
+
+    renderTiles();
+}
+
+function createLevel() {
+    var rd = randRange(0, 2);;
+    for (var j=0; j<level.rows; j++) {
+        var randomtile = randRange(0, bubblecolors-1);
+        var count = 0;
+        for (var i=0; i<level.columns; i++) {
+            if (count >= 2) {
+                var newtile = randRange(0, bubblecolors-1);
+                if (newtile == randomtile) {
+                    newtile = (newtile + 1) % bubblecolors;
+                }
+                randomtile = newtile;
+                count = 0;
+            }
+            count++;
+            
+            if (j < level.rows/2) {
+                level.tiles[i][j].type = ((j < fixTitle[rd].length && i < fixTitle[rd][j].length)) ? fixTitle[rd][j][i] : -1//randomtile;
+                if (j % 2 !== 0 && i===level.columns-1) {
+                    level.tiles[i][j].type = -1;
+                }
+            } else {
+                level.tiles[i][j].type = -1;
+            }
+        }
+    }
+}
+function nextBubble() {
+    player.tiletype = player.nextbubble.tiletype;
+    player.bubble.tiletype = player.nextbubble.tiletype;
+    player.bubble.x = player.x;
+    player.bubble.y = player.y;
+    player.bubble.visible = true;
+    var nextcolor = getExistingColor();
+    player.nextbubble.tiletype = nextcolor;
+}
+function getExistingColor() {
+    existingcolors = findColors();
+    
+    var bubbletype = 0;
+    if (existingcolors.length > 0) {
+        bubbletype = existingcolors[randRange(0, existingcolors.length-1)];
+    }
+    
+    return bubbletype;
+}
+function randRange(low, high) {
+    return Math.floor(low + Math.random()*(high-low+1));
+}
+function shootBubble() {
+    player.bubble.x = player.x;
+    player.bubble.y = player.y;
+    player.bubble.angle = player.angle;
+    player.bubble.tiletype = player.tiletype;
+
+    setGameState(gamestates.shootbubble);
+}
+
+function circleIntersection(x1, y1, r1, x2, y2, r2) {
+    var dx = x1 - x2;
+    var dy = y1 - y2;
+    var len = Math.sqrt(dx * dx + dy * dy);
+    
+    if (len < r1 + r2) {
+        // Circles intersect
+        return true;
+    }
+    
+    return false;
+}
+
+function radToDeg(angle) {
+    return angle * (180 / Math.PI);
+}
+
+function degToRad(angle) {
+    return angle * (Math.PI / 180);
+}
+
+function onMouseMove(e) {
+    if(isShowInstall) return;
+    var posGlobal = getMousePos(canvas, e);
+    var pos = mcGame.globalToLocal(posGlobal.x, posGlobal.y);
+
+    var mouseangle = radToDeg(Math.atan2((player.y+level.tileheight/2) - pos.y, pos.x - (player.x+level.tilewidth/2)));
+    if (mouseangle < 0) {
+        mouseangle = 180 + (180 + mouseangle);
+    }
+    var lbound = 8;
+    var ubound = 172;
+    if (mouseangle > 90 && mouseangle < 270) {
+        // Left
+        if (mouseangle > ubound) {
+            mouseangle = ubound;
+        }
+    } else {
+        // Right
+        if (mouseangle < lbound || mouseangle >= 270) {
+            mouseangle = lbound;
+        }
+    }
+
+    player.angle = mouseangle;
+}
+
+function onMouseDown(e) {
+    if(isShowInstall) return;
+    var pos = getMousePos(canvas, e);
+    if (gamestate == gamestates.ready) {
+        countShooter--; 
+        updateTxtShooter();
+        shootBubble();
+        if(countShooter === 0){
+            showInstallGame();
+        }
+    } else if (gamestate == gamestates.gameover) {
+        showInstallGame();
+    }
+}
+
+function showInstallGame(){
+    // createjs.Sound.play("sClear");
+    // isShowInstall = true;
+    // mcGame.btnInstall.visible = true;
+    // var my = mcGame.btnInstall.y;
+    // mcGame.btnInstall.y += 200;
+    // createjs.Tween.get(mcGame.btnInstall, {override:true}).to({y:my}, 500);
+    // mcGame.btnInstall.addEventListener("click", openGame);   
+    showContinue();
+}
+
+function openGame(){
+    var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ? true : false );
+    if(iOS){
+        window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US"); 
+        return;
+    }
+
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = ua.indexOf("android") > -1; 
+    if( isAndroid ){
+        window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US");
+
+    }else{
+        window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US");
+    }
+
+}
+
+function getMousePos(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: Math.round((e.clientX - rect.left)/(rect.right - rect.left)*canvas.width),
+        y: Math.round((e.clientY - rect.top)/(rect.bottom - rect.top)*canvas.height)
+    };
+}
+    

@@ -27,7 +27,7 @@ lib.ssMetadata = [
 
 
 
-(lib.CachedBmp_2 = function() {
+(lib.CachedBmp_1 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
@@ -1072,7 +1072,7 @@ if (reversed == null) { reversed = false; }
 	this.mcBubble.name = "mcBubble";
 	this.mcBubble.setTransform(144.2,372.45,0.5999,0.5939,0,0,0,0.5,0.4);
 
-	this.instance_2 = new lib.CachedBmp_2();
+	this.instance_2 = new lib.CachedBmp_1();
 	this.instance_2.setTransform(156.05,405.05,0.5,0.5);
 
 	this.instance_3 = new lib.circle();
@@ -1223,7 +1223,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_panda_atlas_1.png?1611077496556", id:"bubble_panda_atlas_1"}
+		{src:"images/bubble_panda_atlas_1.png?1612110851485", id:"bubble_panda_atlas_1"}
 	],
 	preloads: []
 };
