@@ -57,7 +57,9 @@ function handleComplete(evt,comp) {
 	exportRoot = new lib.bubblepanda();
 	stage = new lib.Stage(canvas);	
 	var context = stage.canvas.getContext("2d");
-	context.webkitImageSmoothingEnabled = context.mozImageSmoothingEnabled = true;		
+	context.webkitImageSmoothingEnabled = context.mozImageSmoothingEnabled = true;	
+	createjs.Touch.enable(stage);	
+	stage.enableMouseOver(20);
 	//Registers the "tick" event listener.
 	fnStartAnimation = function() {
 		stage.addChild(exportRoot);

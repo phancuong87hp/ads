@@ -146,6 +146,8 @@ var loadtotal = 0;
 var preloaded = false;
 
 function showGame(_lib, _canvas, _mcGame, _mcMenu){
+   
+
     lib = _lib;
     canvas = _canvas;
     mcGame = _mcGame;
@@ -156,14 +158,29 @@ function showGame(_lib, _canvas, _mcGame, _mcMenu){
     // mcMenu.mcBubble.gotoAndStop(0);
     // mcMenu.mcOuter.gotoAndStop(0);
     this.initgame();
+    mcGame.btnInstall.addEventListener("click", openGame);   
+    
 }
 
 function showContinue(){
-    mcGame.visible = false;
-    mcMenu.visible = true;
-    mcMenu.mcBubble.gotoAndStop(0);
-    mcMenu.mcOuter.gotoAndStop(0);
-    mcMenu.btnContinue.addEventListener("click", onClickContinue);    
+    TweenMax.to(mcGame.btnInstall, 0.5, {alpha:0, onComplete:function(){
+       
+    }.bind(this)});
+
+   TweenMax.delayedCall(0.8, function(){
+        mcGame.visible = false;
+        mcMenu.visible = true;
+        TweenMax.from(mcMenu.mcTho, 0.7, {alpa:0, y:-50, delay:1.5});
+        TweenMax.from(mcMenu.mcLon, 1.2, {alpa:0, y:-50, delay:1.2});
+        TweenMax.from(mcMenu.mcBubble, 1, {alpa:0, y:-50});
+
+        TweenMax.from(mcMenu.btnContinue, 1.5, {alpha: 0, y:400});
+
+        mcMenu.mcBubble.gotoAndStop(0);
+        mcMenu.mcOuter.gotoAndStop(0);
+        mcMenu.btnContinue.addEventListener("click", onClickContinue);    
+   })
+    
 }
 
 function onClickContinue(){
@@ -183,8 +200,15 @@ function initgame() {
     mcGame.addChild(container);
 
     // Add mouse events
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mousedown", onMouseDown);
+    if(this.detectMobile()){
+        canvas.addEventListener("touchmove", onMouseMove);
+        canvas.addEventListener("touchend", onMouseDown);
+    }else{
+        canvas.addEventListener("mousemove", onMouseMove);
+        canvas.addEventListener("mousedown", onMouseDown);
+    }
+   
+   
     
     // Initialize the two-dimensional tile array
     for (var i=0; i<level.columns; i++) {
@@ -337,7 +361,7 @@ function stateRemoveCluster(dt) {
                 
                 if (tile.type >= 0) {
                     tilesleft = true;
-                    var t = (i === 0) ? 0 : i  * 1.5; 
+                    var t = (i === 0) ? 0 : i  * 1.1; 
                     tile.alpha -= dt * 15 / t;
                     if (tile.alpha < 0) {
                         tile.alpha = 0;
@@ -386,6 +410,7 @@ function stateRemoveCluster(dt) {
             
             if (tilefound) {
                 setGameState(gamestates.ready);
+                updatePotisionTitle();
             } else {
                 setGameState(gamestates.gameover);
             }
@@ -449,31 +474,54 @@ function snapBubble() {
         }
     }
     turncounter++;
-    if (turncounter >= 5) {
-        addBubbles();
-        turncounter = 0;
-        rowoffset = (rowoffset + 1) % 2;
-        if (checkGameOver()) {
-            return;
-        }
-    }
+    // if (turncounter >= 5) {
+    //     addBubbles();
+    //     turncounter = 0;
+    //     rowoffset = (rowoffset + 1) % 2;
+    //     if (checkGameOver()) {
+    //         return;
+    //     }
+    // }
     nextBubble();
     setGameState(gamestates.ready);
 }
 
 function updatePotisionTitle(){
     var max = getMaxRowHasBubble();
+    console.log("max: " + max);
     var vy = 0;
     if(max <= 11){
         vy = 0;
     }else{
-        vy = -(max - 11) * (bubbleHeigt - 10);
+        vy = -(max - 11) * (bubbleHeigt - 5);
     }
 
-    
-    TweenMax.to(level, 1, {y: vy})
+   
+    if(level.y !== vy){
+        level.y = vy;
+        for (var i=0; i<level.columns; i++) {
+            for (var j=0; j<level.rows; j++) {
+                var tile = level.tiles[i][j];
+                if (tile.type >= 0 && tile.movie !== null) {
+                    var ty =  getTileCoordinate(i,j)
+                    TweenMax.to(tile.movie, 0.5, {y: ty.tiley, delay:0.4})
+                }
+            }
+        }
 
-    console.log("1111");
+        // TweenMax.delayedCall(1, function(){
+        //     renderTiles();
+        // })
+
+        
+    }else{
+        TweenMax.delayedCall(0.36, function(){
+            renderTiles();
+        })
+    }
+
+   
+    // 
 }
 
 function getMaxRowHasBubble(){
@@ -544,8 +592,13 @@ function statusNearClusterAnim() {
     var newy = movie.y + direct.y * (Math.abs(0 - 5) * 0.4);
     movie.tempX = movie.x;
     movie.tempY = movie.y;
-    TweenMax.to(movie, 0.2, {x: newx, y: newy})
-    TweenMax.to(movie, 0.2, {x: movie.tempX, y: movie.tempY, delay: 0.2});
+    TweenMax.to(movie, 0.16, {x: newx, y: newy})
+    TweenMax.to(movie, 0.16, {x: movie.tempX, y: movie.tempY, delay: 0.16});
+
+    movie.mcOuter.visible = true;
+    TweenMax.delayedCall(0.3, function(){
+        movie.mcOuter.visible = false;
+    })
 
     for(var i = 1; i< nearCluster.length;i++) {
         var mc = nearCluster[i];
@@ -565,8 +618,8 @@ function statusNearClusterAnim() {
         mc.movie.tempX = mc.movie.x;
         mc.movie.tempY = mc.movie.y;
 
-        TweenMax.to(mc.movie, 0.2, {x: newx, y: newy})
-        TweenMax.to(mc.movie, 0.2, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.2});
+        TweenMax.to(mc.movie, 0.16, {x: newx, y: newy})
+        TweenMax.to(mc.movie, 0.16, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.16});
     }
 }
 
@@ -622,31 +675,31 @@ function findColors() {
         colortable.push(false);
     }
 
-    // for (var i=0; i<level.columns; i++) {
-    //     for (var j=level.rows-1; j>=0; j--) {
-    //         var tile = level.tiles[i][j];
-    //         if (tile.type >= 0) {
-    //             if (!colortable[tile.type]) {
-    //                 colortable[tile.type] = true;
-    //                 foundcolors.push(tile.type);  
-    //             }
-    //             break;
-    //         }
-
-    //     }
-    // }
-
     for (var i=0; i<level.columns; i++) {
-        for (var j=0; j<level.rows; j++) {
+        for (var j=level.rows-1; j>=0; j--) {
             var tile = level.tiles[i][j];
             if (tile.type >= 0) {
                 if (!colortable[tile.type]) {
                     colortable[tile.type] = true;
-                    foundcolors.push(tile.type);
+                    foundcolors.push(tile.type);  
                 }
+                break;
             }
+
         }
     }
+
+    // for (var i=0; i<level.columns; i++) {
+    //     for (var j=0; j<level.rows; j++) {
+    //         var tile = level.tiles[i][j];
+    //         if (tile.type >= 0) {
+    //             if (!colortable[tile.type]) {
+    //                 colortable[tile.type] = true;
+    //                 foundcolors.push(tile.type);
+    //             }
+    //         }
+    //     }
+    // }
     
     return foundcolors;
 }
@@ -783,6 +836,7 @@ function renderTiles() {
             if (tile.type >= 0) {              
                 coord.movie = drawBubble(coord.tilex, coord.tiley + shift, tile.type);
                 tile.movie = coord.movie;
+                tile.movie.rootY = tile.movie.y;
                 coordList.push(coord);
             }
         }
@@ -948,6 +1002,7 @@ function drawBubble(x, y, index) {
     bubbleImg.y = y;
     bubbleImg.width = level.tilewidth;
     bubbleImg.height = level.tileheight;
+    bubbleImg.mcOuter.visible = false;
     container.addChild(bubbleImg)
     return bubbleImg;
 }
@@ -1104,7 +1159,7 @@ function degToRad(angle) {
 
 function onMouseMove(e) {
     if(isShowInstall) return;
-    var posGlobal = getMousePos(canvas, e);
+    var posGlobal = (detectMobile() === true) ? getTouchPos(canvas, e) : getMousePos(canvas, e);
     var pos = mcGame.globalToLocal(posGlobal.x, posGlobal.y);
 
     var mouseangle = radToDeg(Math.atan2((player.y+level.tileheight/2) - pos.y, pos.x - (player.x+level.tilewidth/2)));
@@ -1151,25 +1206,27 @@ function showInstallGame(){
     // mcGame.btnInstall.y += 200;
     // createjs.Tween.get(mcGame.btnInstall, {override:true}).to({y:my}, 500);
     // mcGame.btnInstall.addEventListener("click", openGame);   
+    if(mcMenu.visible === true) return;
     showContinue();
 }
 
-function openGame(){
+function detectMobile(){
     var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ? true : false );
     if(iOS){
-        window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US"); 
-        return;
+        return true;
     }
 
     var ua = navigator.userAgent.toLowerCase();
     var isAndroid = ua.indexOf("android") > -1; 
     if( isAndroid ){
-        window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US");
-
-    }else{
-        window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US");
+       true;
     }
 
+    return false;
+}
+
+function openGame(){
+    window.open("https://play.google.com/store/apps/details?id=com.panda.bubble.shooter.mania.free.puzzle.game&hl=vi&gl=US"); 
 }
 
 function getMousePos(canvas, e) {
@@ -1179,4 +1236,14 @@ function getMousePos(canvas, e) {
         y: Math.round((e.clientY - rect.top)/(rect.bottom - rect.top)*canvas.height)
     };
 }
+
+function getTouchPos(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: Math.round((e.changedTouches[0].clientX - rect.left)/(rect.right - rect.left)*canvas.width),
+        y: Math.round((e.changedTouches[0].clientY - rect.top)/(rect.bottom - rect.top)*canvas.height)
+    };
+}
+
+
     
