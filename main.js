@@ -1,4 +1,4 @@
-var lib, canvas, mcGame, mcMenu, mcLine, coordList = [];
+var lib, canvas, mcGame, mcMenu, stage, mcLine, coordList = [];
 var container = new createjs.MovieClip();
 var containerDot = new createjs.MovieClip();
 var lastframe = 0;
@@ -145,9 +145,8 @@ var loadcount = 0;
 var loadtotal = 0;
 var preloaded = false;
 
-function showGame(_lib, _canvas, _mcGame, _mcMenu){
-   
-
+function showGame(_lib, _canvas, _mcGame, _mcMenu, _stage){
+    stage = _stage;
     lib = _lib;
     canvas = _canvas;
     mcGame = _mcGame;
@@ -208,6 +207,7 @@ function initgame() {
         canvas.addEventListener("mousedown", onMouseDown);
     }
    
+
    
     
     // Initialize the two-dimensional tile array
@@ -1220,8 +1220,8 @@ function detectMobile(){
 
     var ua = navigator.userAgent.toLowerCase();
     var isAndroid = ua.indexOf("android") > -1; 
-    if( isAndroid ){
-       true;
+    if(isAndroid){
+        return true;
     }
 
     return false;
