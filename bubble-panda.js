@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"bubble_panda_atlas_1", frames: [[734,776,24,43],[0,0,640,960],[944,104,60,50],[944,156,60,50],[734,925,128,46],[744,379,124,114],[826,891,31,27],[826,856,45,33],[642,776,90,67],[893,684,109,79],[769,593,122,89],[870,409,125,90],[988,846,31,27],[944,208,45,33],[920,927,69,50],[642,845,90,67],[893,765,109,79],[893,593,122,89],[744,501,125,90],[988,875,31,27],[920,979,45,33],[944,0,69,50],[734,856,90,67],[766,775,109,79],[769,684,122,89],[871,501,125,90],[991,904,31,27],[967,979,45,33],[944,52,69,50],[642,914,90,67],[877,846,109,79],[642,685,122,89],[642,593,125,90],[0,962,60,50],[642,544,99,36],[642,0,300,250],[62,962,60,50],[124,962,60,50],[186,962,60,50],[248,962,60,50],[310,962,60,50],[372,962,60,50],[642,252,100,166],[434,962,60,50],[870,252,100,155],[496,962,60,50],[642,420,100,122],[864,927,54,64],[744,252,124,125],[558,962,60,50]]}
+		{name:"bubble_panda_atlas_1", frames: [[302,1144,24,43],[0,0,640,960],[497,1052,60,50],[553,962,60,50],[420,1225,128,46],[0,1509,124,114],[204,1340,31,27],[204,1305,45,33],[126,1554,90,67],[229,1554,109,79],[204,1214,122,89],[0,1749,125,90],[127,2017,31,27],[559,1066,45,33],[426,1066,69,50],[253,1386,90,67],[229,1635,109,79],[126,1463,122,89],[102,1625,125,90],[160,2017,31,27],[189,1912,45,33],[482,1000,69,50],[345,1386,90,67],[250,1463,109,79],[302,962,122,89],[0,1841,125,90],[193,2017,31,27],[189,1947,45,33],[439,1118,69,50],[328,1225,90,67],[253,1305,109,79],[302,1053,122,89],[0,1933,125,90],[226,2017,31,27],[189,1982,45,33],[439,1170,69,50],[364,1294,90,67],[328,1144,109,79],[127,1717,122,89],[126,1371,125,90],[510,1104,60,50],[426,962,99,36],[0,962,300,250],[510,1156,60,50],[559,1014,60,50],[615,962,60,50],[127,1808,60,50],[127,1860,60,50],[127,1912,60,50],[0,1214,100,166],[127,1964,60,50],[102,1214,100,155],[189,1808,60,50],[0,1625,100,122],[426,1000,54,64],[0,1382,124,125],[189,1860,60,50]]}
 ];
 
 
@@ -258,121 +258,170 @@ lib.ssMetadata = [
 
 
 
-(lib.green = function() {
+(lib.effect_pandayellowanimation_0 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.installpngcopy = function() {
+(lib.effect_pandayellowanimation_1 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.logo = function() {
+(lib.effect_pandayellowanimation_2 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.outer2 = function() {
+(lib.effect_pandayellowanimation_3 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.outer_blue = function() {
+(lib.effect_pandayellowanimation_4 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.outer_green = function() {
+(lib.effect_pandayellowanimation_5 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.outer_pink = function() {
+(lib.effect_pandayellowanimation_6 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.outer_red = function() {
+(lib.green = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.outer_yellow = function() {
+(lib.installpngcopy = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.pig = function() {
+(lib.logo = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.pink = function() {
+(lib.outer2 = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.rab = function() {
+(lib.outer_blue = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.red = function() {
+(lib.outer_green = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.soc = function() {
+(lib.outer_pink = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.tayup = function() {
+(lib.outer_red = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.than = function() {
+(lib.outer_yellow = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.yellow = function() {
+(lib.pig = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(49);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.pink = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(50);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.rab = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(51);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.red = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(52);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.soc = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(53);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.tayup = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(54);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.than = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(55);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.yellow = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(56);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -757,25 +806,28 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.effect_pandablueanimation_0();
-	this.instance.setTransform(-15.5,-13.5);
+	this.instance = new lib.effect_pandayellowanimation_0();
+	this.instance.setTransform(-16,-14);
 
-	this.instance_1 = new lib.effect_pandablueanimation_1();
+	this.instance_1 = new lib.effect_pandayellowanimation_1();
 	this.instance_1.setTransform(-23,-17);
 
-	this.instance_2 = new lib.effect_pandablueanimation_3();
-	this.instance_2.setTransform(-45,-34);
+	this.instance_2 = new lib.effect_pandayellowanimation_2();
+	this.instance_2.setTransform(-35,-25);
 
-	this.instance_3 = new lib.effect_pandablueanimation_4();
-	this.instance_3.setTransform(-55,-40);
+	this.instance_3 = new lib.effect_pandayellowanimation_3();
+	this.instance_3.setTransform(-45,-34);
 
-	this.instance_4 = new lib.effect_pandablueanimation_5();
-	this.instance_4.setTransform(-61,-45);
+	this.instance_4 = new lib.effect_pandayellowanimation_4();
+	this.instance_4.setTransform(-55,-40);
 
-	this.instance_5 = new lib.effect_pandablueanimation_6();
-	this.instance_5.setTransform(-63,-45);
+	this.instance_5 = new lib.effect_pandayellowanimation_5();
+	this.instance_5.setTransform(-61,-45);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_3}]},1).to({state:[{t:this.instance_4}]},1).to({state:[{t:this.instance_5}]},1).wait(1));
+	this.instance_6 = new lib.effect_pandayellowanimation_6();
+	this.instance_6.setTransform(-63,-45);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_3}]},1).to({state:[{t:this.instance_4}]},1).to({state:[{t:this.instance_5}]},1).to({state:[{t:this.instance_6}]},1).wait(1));
 
 	this._renderFirstFrame();
 
@@ -1431,11 +1483,11 @@ lib.properties = {
 	id: '634930E0DD4F0E4FAFA8A70C13FEB088',
 	width: 320,
 	height: 480,
-	fps: 30,
+	fps: 60,
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_panda_atlas_1.png?1612278976973", id:"bubble_panda_atlas_1"}
+		{src:"images/bubble_panda_atlas_1.png?1612281402836", id:"bubble_panda_atlas_1"}
 	],
 	preloads: []
 };

@@ -61,6 +61,7 @@ function handleComplete(evt,comp) {
 	createjs.Touch.enable( stage, false, true );	
 	stage.enableMouseOver(20);
 	stage.preventSelection = false;
+	createjs.Ticker.timingMode = createjs.Ticker.RAF;
 	//Registers the "tick" event listener.
 	fnStartAnimation = function() {
 		stage.addChild(exportRoot);
