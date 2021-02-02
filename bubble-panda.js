@@ -1435,7 +1435,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_panda_atlas_1.png?1612203544195", id:"bubble_panda_atlas_1"}
+		{src:"images/bubble_panda_atlas_1.png?1612278976973", id:"bubble_panda_atlas_1"}
 	],
 	preloads: []
 };

@@ -466,7 +466,7 @@ function snapBubble() {
         if (cluster.length >= 3) {
             setGameState(gamestates.idle);
             dropCluster = findDropCluster(cluster);
-            TweenMax.delayedCall(0.4, function(){
+            TweenMax.delayedCall(0.15, function(){
                 setGameState(gamestates.removecluster);
             }.bind(this));
            
@@ -1106,13 +1106,15 @@ function createLevel() {
     }
 }
 function nextBubble() {
+    
+    var nextcolor = getExistingColor();
+    player.nextbubble.tiletype = nextcolor;
+
     player.tiletype = player.nextbubble.tiletype;
     player.bubble.tiletype = player.nextbubble.tiletype;
     player.bubble.x = player.x;
     player.bubble.y = player.y;
     player.bubble.visible = true;
-    var nextcolor = getExistingColor();
-    player.nextbubble.tiletype = nextcolor;
 }
 function getExistingColor() {
     existingcolors = findColors();
