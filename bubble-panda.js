@@ -1303,7 +1303,7 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_3
 	this.instance = new lib.blue();
-	this.instance.setTransform(144,372,0.6,0.594);
+	this.instance.setTransform(139,372,0.6,0.594);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
@@ -1483,11 +1483,11 @@ lib.properties = {
 	id: '634930E0DD4F0E4FAFA8A70C13FEB088',
 	width: 320,
 	height: 480,
-	fps: 60,
+	fps: 30,
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_panda_atlas_1.png?1612281402836", id:"bubble_panda_atlas_1"}
+		{src:"images/bubble_panda_atlas_1.png?1612283058335", id:"bubble_panda_atlas_1"}
 	],
 	preloads: []
 };

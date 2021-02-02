@@ -1003,6 +1003,9 @@ function drawBubble(x, y, index) {
     bubbleImg.width = level.tilewidth;
     bubbleImg.height = level.tileheight;
     bubbleImg.mcOuter.visible = false;
+
+    // bubbleImg.cache(-30,-25,90,75);
+
     container.addChild(bubbleImg)
     return bubbleImg;
 }
