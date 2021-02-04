@@ -144,6 +144,7 @@ var bubbleimage;
 var loadcount = 0;
 var loadtotal = 0;
 var preloaded = false;
+var isTouchStart = false;
 
 function showGame(_lib, _canvas, _mcGame, _mcMenu, _stage){
     stage = _stage;
@@ -200,6 +201,7 @@ function initgame() {
 
     // Add mouse events
     if(this.detectMobile()){
+        canvas.addEventListener("touchstart", onTouchStart);
         canvas.addEventListener("touchmove", onMouseMove);
         canvas.addEventListener("touchend", onMouseDown);
     }else{
@@ -233,6 +235,10 @@ function initgame() {
     
     newGame();
     main(0);
+}
+
+function onTouchStart(){
+    isTouchStart = true;
 }
 
 function  updateTxtShooter(){
@@ -385,7 +391,7 @@ function stateRemoveCluster(dt) {
                     tilesleft = true;
                     tile.velocity += dt * randRange(20, 1500);;
                     tile.shift += dt * tile.velocity;
-                    if (tile.alpha == 0 || (tile.y * level.rowheight + tile.shift > canvas.height)) {
+                    if (tile.alpha == 0 || (tile.y * level.rowheight + tile.shift > canvas.height / 6)) {
                         tile.type = -1;
                         tile.shift = 0;
                         tile.alpha = 1;
@@ -466,7 +472,7 @@ function snapBubble() {
         if (cluster.length >= 3) {
             setGameState(gamestates.idle);
             dropCluster = findDropCluster(cluster);
-            TweenMax.delayedCall(0.15, function(){
+            TweenMax.delayedCall(0.05, function(){
                 setGameState(gamestates.removecluster);
             }.bind(this));
            
@@ -1012,7 +1018,8 @@ function drawBubble(x, y, index) {
 
 function drawDot(x, y, index) {
     if (index < 0 || index >= bubblecolors)
-        return;
+        return;  
+
     
     var bubbleImg = getMcDot(index);
     bubbleImg.x = x;
@@ -1020,7 +1027,10 @@ function drawDot(x, y, index) {
     bubbleImg.width = level.tilewidth;
     bubbleImg.height = level.tileheight;
     containerDot.addChild(bubbleImg)
-
+    if(detectMobile() === true && isTouchStart === false) bubbleImg.visible = false;
+    else bubbleImg.visible = true;
+    
+    
     return bubbleImg;
 }
 
@@ -1190,6 +1200,7 @@ function onMouseMove(e) {
 
 function onMouseDown(e) {
     if(isShowInstall) return;
+    isTouchStart = false;
     var pos = getMousePos(canvas, e);
     if (gamestate == gamestates.ready) {
         countShooter--; 
