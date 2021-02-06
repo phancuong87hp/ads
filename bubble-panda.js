@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"bubble_panda_atlas_1", frames: [[302,1144,24,43],[0,0,640,960],[497,1052,60,50],[553,962,60,50],[420,1225,128,46],[0,1509,124,114],[204,1340,31,27],[204,1305,45,33],[126,1554,90,67],[229,1554,109,79],[204,1214,122,89],[0,1749,125,90],[127,2017,31,27],[559,1066,45,33],[426,1066,69,50],[253,1386,90,67],[229,1635,109,79],[126,1463,122,89],[102,1625,125,90],[160,2017,31,27],[189,1912,45,33],[482,1000,69,50],[345,1386,90,67],[250,1463,109,79],[302,962,122,89],[0,1841,125,90],[193,2017,31,27],[189,1947,45,33],[439,1118,69,50],[328,1225,90,67],[253,1305,109,79],[302,1053,122,89],[0,1933,125,90],[226,2017,31,27],[189,1982,45,33],[439,1170,69,50],[364,1294,90,67],[328,1144,109,79],[127,1717,122,89],[126,1371,125,90],[510,1104,60,50],[426,962,99,36],[0,962,300,250],[510,1156,60,50],[559,1014,60,50],[615,962,60,50],[127,1808,60,50],[127,1860,60,50],[127,1912,60,50],[0,1214,100,166],[127,1964,60,50],[102,1214,100,155],[189,1808,60,50],[0,1625,100,122],[426,1000,54,64],[0,1382,124,125],[189,1860,60,50]]}
+		{name:"bubble_panda_atlas_1", frames: [[704,720,24,43],[0,0,640,960],[896,312,60,50],[950,207,60,50],[766,312,128,46],[404,1089,124,114],[689,807,31,27],[766,464,45,33],[766,243,90,67],[642,639,109,79],[642,184,122,89],[0,1214,125,90],[722,807,31,27],[880,207,45,33],[822,398,69,50],[858,243,90,67],[753,639,109,79],[642,275,122,89],[127,1214,125,90],[254,1214,31,27],[642,772,45,33],[822,450,69,50],[880,0,90,67],[769,0,109,79],[642,366,122,89],[632,962,125,90],[254,1243,31,27],[642,807,45,33],[766,502,69,50],[880,69,90,67],[769,81,109,79],[642,457,122,89],[642,0,125,90],[972,156,31,27],[689,772,45,33],[837,502,69,50],[880,138,90,67],[769,162,109,79],[642,548,122,89],[642,92,125,90],[972,0,60,50],[766,360,99,36],[0,962,300,250],[972,52,60,50],[972,104,60,50],[950,259,60,50],[893,364,60,50],[893,416,60,50],[766,554,60,50],[302,962,100,166],[828,554,60,50],[530,962,100,155],[759,720,60,50],[302,1130,100,122],[766,398,54,64],[642,720,60,50],[404,962,124,125],[759,772,60,50]]}
 ];
 
 
@@ -412,16 +412,23 @@ lib.ssMetadata = [
 
 
 
-(lib.than = function() {
+(lib.tay = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(55);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.yellow = function() {
+(lib.than = function() {
 	this.initialize(ss["bubble_panda_atlas_1"]);
 	this.gotoAndStop(56);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.yellow = function() {
+	this.initialize(ss["bubble_panda_atlas_1"]);
+	this.gotoAndStop(57);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -463,6 +470,28 @@ if (reversed == null) { reversed = false; }
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-64,-23,128,46);
+
+
+(lib.Symbol9 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.instance = new lib.tay();
+	this.instance.setTransform(-30,-25);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.Symbol9, new cjs.Rectangle(-30,-25,60,50), null);
 
 
 (lib.Symbol7 = function(mode,startPosition,loop,reversed) {
@@ -619,7 +648,7 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.Symbol11, new cjs.Rectangle(-25,-41.5,50,83), null);
 
 
-(lib.Symbol9 = function(mode,startPosition,loop,reversed) {
+(lib.Symbol9_1 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -631,14 +660,14 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.logo();
-	this.instance.setTransform(-136.45,-113.7,0.9096,0.9096);
+	this.instance_1 = new lib.logo();
+	this.instance_1.setTransform(-136.45,-113.7,0.9096,0.9096);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.Symbol9, new cjs.Rectangle(-136.4,-113.7,272.9,227.4), null);
+}).prototype = getMCSymbolPrototype(lib.Symbol9_1, new cjs.Rectangle(-136.4,-113.7,272.9,227.4), null);
 
 
 (lib.mcOuter = function(mode,startPosition,loop,reversed) {
@@ -1065,6 +1094,28 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(-49.5,-18,99,36);
 
 
+(lib.Symbol8 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.instance = new lib.Symbol9();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({x:128},19).to({x:0},20).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-30,-25,188,50);
+
+
 (lib.Symbol6 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1193,7 +1244,7 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(-25,-55,50,96.5);
 
 
-(lib.Symbol8 = function(mode,startPosition,loop,reversed) {
+(lib.Symbol8_1 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -1205,13 +1256,13 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.Symbol9();
+	this.instance_1 = new lib.Symbol9_1();
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.Symbol8, new cjs.Rectangle(-136.4,-113.7,272.9,227.4), null);
+}).prototype = getMCSymbolPrototype(lib.Symbol8_1, new cjs.Rectangle(-136.4,-113.7,272.9,227.4), null);
 
 
 (lib.mcBubble = function(mode,startPosition,loop,reversed) {
@@ -1303,7 +1354,7 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_3
 	this.instance = new lib.blue();
-	this.instance.setTransform(139,372,0.6,0.594);
+	this.instance.setTransform(144,372,0.6,0.594);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
@@ -1333,7 +1384,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.mcOuter},{t:this.instance_2},{t:this.instance_1},{t:this.mcLon},{t:this.mcTho},{t:this.btnContinue}]}).wait(1));
 
 	// Symbol_8
-	this.mcBubble = new lib.Symbol8();
+	this.mcBubble = new lib.Symbol8_1();
 	this.mcBubble.name = "mcBubble";
 	this.mcBubble.setTransform(166.45,125.7);
 
@@ -1434,6 +1485,10 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	// Layer_1
+	this.mcTay = new lib.Symbol8();
+	this.mcTay.name = "mcTay";
+	this.mcTay.setTransform(94,314);
+
 	this.instance_1 = new lib.soc();
 	this.instance_1.setTransform(224,355,0.7369,0.7369);
 
@@ -1443,7 +1498,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_3 = new lib.bg();
 	this.instance_3.setTransform(0,0,0.5,0.5);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.mcTay}]}).wait(1));
 
 	this._renderFirstFrame();
 
@@ -1487,7 +1542,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_panda_atlas_1.png?1612283058335", id:"bubble_panda_atlas_1"}
+		{src:"images/bubble_panda_atlas_1.png?1612603277023", id:"bubble_panda_atlas_1"}
 	],
 	preloads: []
 };

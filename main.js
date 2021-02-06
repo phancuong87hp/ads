@@ -239,6 +239,7 @@ function initgame() {
 
 function onTouchStart(){
     isTouchStart = true;
+    mcGame.mcTay.visible = false;
 }
 
 function  updateTxtShooter(){
@@ -1199,6 +1200,7 @@ function onMouseMove(e) {
 }
 
 function onMouseDown(e) {
+    mcGame.mcTay.visible = false;
     if(isShowInstall) return;
     isTouchStart = false;
     var pos = getMousePos(canvas, e);
