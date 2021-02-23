@@ -1358,7 +1358,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_dino_atlas_1.png?1614055552570", id:"bubble_dino_atlas_1"}
+		{src:"images/bubble_dino_atlas_1.png?1614064641201", id:"bubble_dino_atlas_1"}
 	],
 	preloads: []
 };
