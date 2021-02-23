@@ -61,22 +61,22 @@ var fixTitle=[
    
 ]
 
-// Level
+
 var level = {
-    x: 2,           // X position
-    y: 0,          // Y position
-    width: 0,       // Width, gets calculated
-    height: 0,      // Height, gets calculated
-    columns: 11,    // Number of tile columns
-    rows: 100,       // Number of tile rows
-    tilewidth: 28,  // Visual width of a tile
-    tileheight: 30, // Visual height of a tile
-    rowheight: 25, //34,  // Height of a row
-    radius: 15,     // Bubble collision radius
-    tiles: []       // The two-dimensional tile array  40 30
+    x: 2,         
+    y: 0,       
+    width: 0,     
+    height: 0,      
+    columns: 11,   
+    rows: 100,      
+    tilewidth: 28, 
+    tileheight: 30,
+    rowheight: 25,
+    radius: 15,     
+    tiles: []      
 };
 
-// Define a tile class
+
 var Tile = function(x, y, type, shift) {
     this.movie = null;
     this.x = x;
@@ -89,7 +89,6 @@ var Tile = function(x, y, type, shift) {
     this.processed = false;
 };
 
-// Player
 var player = {
     x: 147,
     y: 372,
@@ -113,34 +112,21 @@ var player = {
                 }
 };
 
-// Neighbor offset table
-var neighborsoffsets = [[[1, 0], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1]], // Even row tiles
-                        [[1, 0], [1, 1], [0, 1], [-1, 0], [0, -1], [1, -1]]];  // Odd row tiles
+var neighborsoffsets = [[[1, 0], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1]], 
+                        [[1, 0], [1, 1], [0, 1], [-1, 0], [0, -1], [1, -1]]];  
 
-// Number of different colors
 var bubblecolors = 5;
-
-// Game states
 var gamestates = { init: 0, ready: 1, shootbubble: 2, removecluster: 3, gameover: 4, idle:5 };
 var gamestate = gamestates.init;
-
 var turncounter = 0;
 var rowoffset = 0;
-
-// Animation variables
 var animationstate = 0;
 var animationtime = 0;
-
-// Clusters
 var showcluster = false;
 var cluster = [];
 var floatingclusters = [];
-
-// Images
 var images = [];
 var bubbleimage;
-
-// Image loading global variables
 var loadcount = 0;
 var loadtotal = 0;
 var preloaded = false;
@@ -155,10 +141,11 @@ function showGame(_lib, _canvas, _mcGame, _mcMenu, _stage){
 
     mcGame.visible = true;
     mcMenu.visible = false;
-    // mcMenu.mcBubble.gotoAndStop(0);
-    // mcMenu.mcOuter.gotoAndStop(0);
+
     this.initgame();
     mcGame.btnInstall.addEventListener("click", openGame);   
+    
+	// loadAnim();
     
 }
 
@@ -170,13 +157,11 @@ function showContinue(){
    TweenMax.delayedCall(0.8, function(){
         mcGame.visible = false;
         mcMenu.visible = true;
-        TweenMax.from(mcMenu.mcTho, 0.7, {alpa:0, y:-50, delay:1.5});
-        TweenMax.from(mcMenu.mcLon, 1.2, {alpa:0, y:-50, delay:1.2});
         TweenMax.from(mcMenu.mcBubble, 1, {alpa:0, y:-50});
 
         TweenMax.from(mcMenu.btnContinue, 1.5, {alpha: 0, y:400});
 
-        mcMenu.mcBubble.gotoAndStop(0);
+        // mcMenu.mcBubble.gotoAndStop(0);
         mcMenu.mcOuter.gotoAndStop(0);
         mcMenu.btnContinue.addEventListener("click", onClickContinue);    
    })
@@ -187,7 +172,6 @@ function onClickContinue(){
     this.openGame();
 }
 
-// Initialize the game
 function initgame() {
     mcGame.mcOuter.gotoAndStop(0);
     mcTempBubble = mcGame.mcBubble;
@@ -199,7 +183,6 @@ function initgame() {
     mcGame.addChild(containerDot);
     mcGame.addChild(container);
 
-    // Add mouse events
     if(this.detectMobile()){
         canvas.addEventListener("touchstart", onTouchStart);
         canvas.addEventListener("touchmove", onMouseMove);
@@ -208,25 +191,19 @@ function initgame() {
         canvas.addEventListener("mousemove", onMouseMove);
         canvas.addEventListener("mousedown", onMouseDown);
     }
-   
 
-   
-    
-    // Initialize the two-dimensional tile array
     for (var i=0; i<level.columns; i++) {
         level.tiles[i] = [];
         for (var j=0; j<level.rows; j++) {
-            // Define a tile type and a shift parameter for animation
             level.tiles[i][j] = new Tile(i, j, 0, 0);
         }
     }
     
     level.width = level.columns * level.tilewidth + level.tilewidth/2;
     level.height = (level.rows-1) * level.rowheight + level.tileheight;
-    
-    // Init the player
-    player.x = mcTempBubble.x;//level.x + level.width/2 - level.tilewidth/2;
-    player.y = mcTempBubble.y;//level.y + level.height;
+  
+    player.x = mcTempBubble.x;
+    player.y = mcTempBubble.y;
     player.angle = 90;
     player.tiletype = 0;
     
@@ -247,28 +224,22 @@ function  updateTxtShooter(){
     mcGame.txtShooter.visible = false;
 }
 
-// Main loop
 function main(tframe) {
-    // Request animation frames
     window.requestAnimationFrame(main);
     update(tframe);
     render();
 }
 
-// Update the game state
 function update(tframe) {
     var dt = (tframe - lastframe) / 1000;
     lastframe = tframe;
-    // stateDotLine(dt);
     if (gamestate == gamestates.ready) {
-        // Game is ready for player input
     } else if (gamestate == gamestates.shootbubble) {
-        // Bubble is moving
         stateShootBubble(dt);
     } else if (gamestate == gamestates.removecluster) {
-        // Remove cluster and drop tiles
         stateRemoveCluster(dt);
     }
+
 }
 
 function setGameState(newgamestate) {
@@ -280,41 +251,31 @@ function setGameState(newgamestate) {
 
 
 function stateShootBubble(dt) {
-    // Bubble is moving
-    // Move the bubble in the direction of the mouse
     player.bubble.x += dt * player.bubble.speed * Math.cos(degToRad(player.bubble.angle));
     player.bubble.y += dt * player.bubble.speed * -1*Math.sin(degToRad(player.bubble.angle));
     
-    // Handle left and right collisions with the level
     if (player.bubble.x <= level.x) {
-        // Left edge
         player.bubble.angle = 180 - player.bubble.angle;
         player.bubble.x = level.x;
     } else if (player.bubble.x + level.tilewidth >= level.x + level.width) {
-        // Right edge
         player.bubble.angle = 180 - player.bubble.angle;
         player.bubble.x = level.x + level.width - level.tilewidth;
     }
 
-    // Collisions with the top of the level
     if (player.bubble.y <= level.y) {
-        // Top collision
         player.bubble.y = level.y;
         snapBubble();
         return;
     }
     
-    // Collisions with other tiles
     for (var i=0; i<level.columns; i++) {
         for (var j=0; j<level.rows; j++) {
             var tile = level.tiles[i][j];
-            
-            // Skip empty tiles
+           
             if (tile.type < 0) {
                 continue;
             }
             
-            // Check for intersections
             var coord = getTileCoordinate(i, j);
             if (circleIntersection(player.bubble.x + level.tilewidth/2,
                                     player.bubble.y + level.tileheight/2,
@@ -323,7 +284,6 @@ function stateShootBubble(dt) {
                                     coord.tiley + level.tileheight/2,
                                     level.radius)) {
                                     
-                // Intersection with a level bubble
                 snapBubble();
                 return;
             }
@@ -368,12 +328,12 @@ function stateRemoveCluster(dt) {
                 
                 if (tile.type >= 0) {
                     tilesleft = true;
-                    var t = (i === 0) ? 0 : i  * 1.1; 
-                    tile.alpha -= dt * 15 / t;
+                    var t = (i === 0) ? 1 : i  * 1.1; 
+                    var al = dt * 15 / t;
+                    tile.alpha -= al;
                     if (tile.alpha < 0) {
                         tile.alpha = 0;
                     }
-
                     if (tile.alpha == 0) {
                         drawAnimBubble(tile.movie.x, tile.movie.y, tile.type);
                         tile.type = -1;
@@ -383,8 +343,6 @@ function stateRemoveCluster(dt) {
             }
         }
 
-
-        // Drop bubbles
         for (var i=0; i<floatingclusters.length; i++) {
             for (var j=0; j<floatingclusters[i].length; j++) {
                 var tile = floatingclusters[i][j];
@@ -403,7 +361,6 @@ function stateRemoveCluster(dt) {
         }
         
         if (!tilesleft) {
-            // Next bubble
             nextBubble();
             var tilefound = false
             for (var i=0; i<level.columns; i++) {
@@ -481,14 +438,6 @@ function snapBubble() {
         }
     }
     turncounter++;
-    // if (turncounter >= 5) {
-    //     addBubbles();
-    //     turncounter = 0;
-    //     rowoffset = (rowoffset + 1) % 2;
-    //     if (checkGameOver()) {
-    //         return;
-    //     }
-    // }
     nextBubble();
     setGameState(gamestates.ready);
 }
@@ -514,21 +463,12 @@ function updatePotisionTitle(){
                     TweenMax.to(tile.movie, 0.5, {y: ty.tiley, delay:0.4})
                 }
             }
-        }
-
-        // TweenMax.delayedCall(1, function(){
-        //     renderTiles();
-        // })
-
-        
+        }   
     }else{
         TweenMax.delayedCall(0.36, function(){
             renderTiles();
         })
     }
-
-   
-    // 
 }
 
 function getMaxRowHasBubble(){
@@ -569,9 +509,6 @@ function findNearCluster(tx, ty, matchtype, reset, skipremoved) {
         if(Math.abs(currenttile.y - targettile.y) > 2 && Math.abs(currenttile.x - targettile.x) > 2) continue;
         if(Math.abs(currenttile.y - targettile.y) > 1 && Math.abs(currenttile.x - targettile.x) > 2) continue;
 
-        // if(Math.abs(currenttile.x - targettile.x) > 2 ||  Math.abs(currenttile.y - targettile.y) > 3)
-        //     continue;
-
         foundcluster.push(currenttile);
         var neighbors = getNeighbors(currenttile);
         for (var i=0; i<neighbors.length; i++) {
@@ -580,7 +517,6 @@ function findNearCluster(tx, ty, matchtype, reset, skipremoved) {
                 neighbors[i].processed = true;
             }
         }
-        // }
     }
 
     return foundcluster;
@@ -603,9 +539,13 @@ function statusNearClusterAnim() {
     TweenMax.to(movie, 0.16, {x: movie.tempX, y: movie.tempY, delay: 0.16});
 
     movie.mcOuter.visible = true;
-    TweenMax.delayedCall(0.3, function(){
-        movie.mcOuter.visible = false;
-    })
+    movie.mcOuter.alpha = 0;
+
+    TweenMax.to(movie.mcOuter,0.2, {alpha:1, onComplete:function(){
+        TweenMax.to(movie.mcOuter, 0.2, {alpha:0, onComplete:function(){
+            movie.mcOuter.visible = false;
+        }.bind(this)})
+    }.bind(this)})
 
     for(var i = 1; i< nearCluster.length;i++) {
         var mc = nearCluster[i];
@@ -620,13 +560,13 @@ function statusNearClusterAnim() {
         var near = (Math.abs(vx) > Math.abs(vy)) ? Math.abs(vx) : Math.abs(vy);
         
         // console.log("x:  " + vx + "  y:  " + vy + "  " + direct + "  " + near);
-        var newx = mc.movie.x + direct.x * (Math.abs(near - 4) * 0.4);
-        var newy = mc.movie.y + direct.y * (Math.abs(near - 4) * 0.4);
+        var newx = mc.movie.x + direct.x * (Math.abs(near - 4) * 0.8);
+        var newy = mc.movie.y + direct.y * (Math.abs(near - 4) * 0.8);
         mc.movie.tempX = mc.movie.x;
         mc.movie.tempY = mc.movie.y;
 
-        TweenMax.to(mc.movie, 0.16, {x: newx, y: newy})
-        TweenMax.to(mc.movie, 0.16, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.16});
+        TweenMax.to(mc.movie, 0.2, {x: newx, y: newy})
+        TweenMax.to(mc.movie, 0.2, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.2, ease:"power3.easeOut"});
     }
 }
 
@@ -695,18 +635,6 @@ function findColors() {
 
         }
     }
-
-    // for (var i=0; i<level.columns; i++) {
-    //     for (var j=0; j<level.rows; j++) {
-    //         var tile = level.tiles[i][j];
-    //         if (tile.type >= 0) {
-    //             if (!colortable[tile.type]) {
-    //                 colortable[tile.type] = true;
-    //                 foundcolors.push(tile.type);
-    //             }
-    //         }
-    //     }
-    // }
     
     return foundcolors;
 }
@@ -787,7 +715,7 @@ function resetRemoved() {
 }
 
 function getNeighbors(tile) {
-    var tilerow = (tile.y + rowoffset) % 2; // Even or odd row
+    var tilerow = (tile.y + rowoffset) % 2;
     var neighbors = [];
     var n = neighborsoffsets[tilerow];
     if(n===undefined)  neighbors; 
@@ -809,7 +737,6 @@ function drawCenterText(text, x, y, width) {
 
 function render() {
     var yoffset =  level.tileheight/2;
-    // renderTiles();
     if (showcluster) {
         renderCluster(cluster, 255, 128, 128);
         
@@ -826,6 +753,7 @@ function render() {
     if (gamestate == gamestates.gameover) {
     }
 }
+
 function renderTiles() {
     for(var i=0;i<coordList.length;i++){
         if(coordList[i].movie){
@@ -840,6 +768,7 @@ function renderTiles() {
             var tile = level.tiles[i][j];
             var shift = tile.shift;
             var coord = getTileCoordinate(i, j);
+            
             if (tile.type >= 0) {              
                 coord.movie = drawBubble(coord.tilex, coord.tiley + shift, tile.type);
                 tile.movie = coord.movie;
@@ -946,11 +875,9 @@ function stateDotLine(mcDot, dt){
     mcDot.x += dt * player.bubble.speed * Math.cos(degToRad(player.bubble.angle));
     mcDot.y += dt * player.bubble.speed * -1 * Math.sin(degToRad(player.bubble.angle));
      if (mcDot.x <= level.x) {
-        // Left edge
         mcDot.angle = 180 - player.bubble.angle;
         mcDot.x = level.x;
     } else if (mcDot.x + level.tilewidth >= level.x + level.width) {
-        // Right edge
         mcDot.angle = 180 - mcDot.angle;
         mcDot.x = level.x + level.width - level.tilewidth;
     }
@@ -959,7 +886,6 @@ function stateDotLine(mcDot, dt){
         return;
     }
     
-    // Collisions with other tiles
     for (var i=0; i<level.columns; i++) {
         for (var j=0; j<level.rows; j++) {
             var tile = level.tiles[i][j];
@@ -1011,8 +937,6 @@ function drawBubble(x, y, index) {
     bubbleImg.height = level.tileheight;
     bubbleImg.mcOuter.visible = false;
 
-    // bubbleImg.cache(-30,-25,90,75);
-
     container.addChild(bubbleImg)
     return bubbleImg;
 }
@@ -1036,19 +960,27 @@ function drawDot(x, y, index) {
 }
 
 function drawAnimBubble(x, y, index){
-    var anim = getMcAnim(index);
-    anim.x = x + 18;
-    anim.y = y + 15;
-    anim.scale = 0.7;
-    anim.gotoAndStop(0);
-    anim.on("tick", function() {
-        if (anim.currentFrame == anim.totalFrames - 1) { 
-            anim.gotoAndStop(0);
-            anim.parent.removeChild(anim);
-        }
-    });
-    container.addChild(anim);
-    anim.gotoAndPlay(0);
+    var bubble = this.drawBubble(x,y,index);
+    var scale = bubble.scale + 0.07;
+    TweenMax.to(bubble, 0.05, {scale: scale, alpa:0, onComplete:function(){
+        container.removeChild(bubble);
+    }})
+
+    TweenMax.delayedCall(0.02, function(){
+        var anim = getMcAnim(index);
+        anim.x = x + 18;
+        anim.y = y + 15;
+        anim.scale = 0.7;
+        anim.gotoAndStop(0);
+        anim.on("tick", function() {
+            if (anim.currentFrame == anim.totalFrames - 1) { 
+                anim.gotoAndStop(0);
+                anim.parent.removeChild(anim);
+            }
+        });
+        container.addChild(anim);
+        anim.gotoAndPlay(0);  
+   })
 
 }
 
@@ -1158,7 +1090,6 @@ function circleIntersection(x1, y1, r1, x2, y2, r2) {
     var len = Math.sqrt(dx * dx + dy * dy);
     
     if (len < r1 + r2) {
-        // Circles intersect
         return true;
     }
     
@@ -1216,14 +1147,7 @@ function onMouseDown(e) {
     }
 }
 
-function showInstallGame(){
-    // createjs.Sound.play("sClear");
-    // isShowInstall = true;
-    // mcGame.btnInstall.visible = true;
-    // var my = mcGame.btnInstall.y;
-    // mcGame.btnInstall.y += 200;
-    // createjs.Tween.get(mcGame.btnInstall, {override:true}).to({y:my}, 500);
-    // mcGame.btnInstall.addEventListener("click", openGame);   
+function showInstallGame(){  
     if(mcMenu.visible === true) return;
     showContinue();
 }
@@ -1263,5 +1187,176 @@ function getTouchPos(canvas, e) {
     };
 }
 
+//////////////////////////////////////SPINE////////////////////////////////
 
+function loadAnim(){
+    var xhr = new XMLHttpRequest();
+	xhr.open("GET", "data/Dinobaby_green.atlas", true);
+	xhr.onload = this.atlasLoadHandler.bind(this);
+    xhr.setRequestHeader('Content-Type', 'application/octet-stream;');
+	xhr.send();
+
+    this.dkm1 = TweenMax.delayedCall(0.5, this.reLoadAnim.bind(this))
+}
+
+function reLoadAnim() {
+    this.loadAnim()
+}
+
+function atlasLoadHandler(event) {
+    this.dkm1.kill(); 
+	this.atlas = new spine.Atlas(event.target.response, {load:this.textureLoaderLoad.bind(this), unload:this.textureLoaderUnLoad.bind(this)});
+}
+
+function textureLoaderUnLoad(texture) {
+	texture.destroy();
+}
+
+function textureLoaderLoad(page, path, atlas) {
+    console.log("1111111111111111111")
+	this.page = page;
+	this.path = path;
+	this.atlas = atlas;
+	
+	this.image = new Image();
+	this.image.onload = this.imageLoadHandler.bind(this);
+	this.image.src = "data/" + path;
     
+    this.dkm2 = TweenMax.delayedCall(0.5, this.reTextureLoaderLoad.bind(this),[page, path, atlas])
+}
+
+function reTextureLoaderLoad(page, path, atlas) {
+    this.textureLoaderLoad(page, path, atlas)
+}
+
+function imageLoadHandler() {
+    console.log("222222222222222222222")
+    this.dkm2.kill(); 
+    if(this.dancerContainer !== undefined) return;
+	this.dancerContainer = new createjs.Container();
+    this.dancerContainer.x = 89;
+    this.dancerContainer.y = 400;
+    this.dancerContainer.visible = false;
+	this.mcGame.addChild(this.dancerContainer);
+	
+	this.dancer = new createjs.Container();
+	this.dancer.scaleX = this.dancer.scaleY = 0.30;
+	this.dancerContainer.addChild(this.dancer);
+	this.containers = [];
+	for (var i = 0; i < this.atlas.regions.length; i++) {
+		var region = this.atlas.regions[i];
+		
+		var canvas = document.createElement("canvas");
+		canvas.id = region.name;
+		canvas.width = region.width;
+		canvas.height = region.height;
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(image, -region.x, -region.y);
+		
+		var container = new createjs.Container();
+		var rotationContainer = new createjs.Container();
+		rotationContainer.name = "rotationContainer";
+		container.addChild(rotationContainer);
+		var bitmap = new createjs.Bitmap(canvas);
+		bitmap.name = "bitmap";
+		bitmap.x = region.width / -2;
+		bitmap.y = region.height / -2;
+		rotationContainer.addChild(bitmap);
+		container.name = region.name;
+		this.dancer.addChild(container);
+		this.containers.push(container);
+	}
+    this.loadJsonAnim();
+}
+
+function loadJsonAnim() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "data/Dinobaby_green.json", true);
+	xhr.onload = this.skeletonLoadHandler.bind(this);
+    xhr.timeout = 2000;
+	xhr.send();
+
+    this.dkm3 = TweenMax.delayedCall(0.5, this.reLoadJsonAnim.bind(this))
+}
+
+function reLoadJsonAnim() {
+    this.loadJsonAnim();
+}
+
+function skeletonLoadHandler (event) {
+    console.log("3333333333333333")
+    this.dkm3.kill(); 
+    this.dancerContainer.visible = true;
+	var jsonSkeleton = new spine.SkeletonJson(new spine.AtlasAttachmentLoader(this.atlas));
+	this.skeletonData = jsonSkeleton.readSkeletonData(eval("(" + event.target.response + ")"));
+	
+	spine.Bone.yDown = true;
+
+	this.skeleton = new spine.Skeleton(skeletonData);
+	this.skeleton.updateWorldTransform();
+
+	this.stateData = new spine.AnimationStateData(this.skeletonData);	
+	this.state = new spine.AnimationState(this.stateData);
+	
+	var hiphop = {id:"hiphop", title:"Hip Hop", url:"", bpm:96, battleURL:""}
+	hiphop.moves = ["hiphop01"];
+	hiphop.idle = "hiphop01";
+	
+	this.danceMoveTimeOut = 0;
+	var music = hiphop;
+	var moves = music.moves.slice();
+	moves.push(music.idle);
+	for (j = 0; j < moves.length; j++) {
+		for (k = 0; k < moves.length; k++) {
+			if (j != k) {
+				this.stateData.setMixByName(moves[j], moves[k], 0.2);
+			}
+		}
+	}
+	this.doRandomDanceMove(hiphop.moves.slice());
+	createjs.Ticker.on("tick", function(e){
+        this.updateSkeleton();
+        // this.stage.update();
+    }.bind(this))
+}
+
+function doRandomDanceMove(move) {
+	this.state.addAnimationByName(0, move, true, 0);
+}
+
+
+function updateSkeleton(){
+    if(this.skeleton === undefined) return;
+    this.lastTime = this.lastTime || Date.now();
+	var delta = (Date.now() - this.lastTime) * 0.001;
+	this.lastTime = Date.now();
+	this.state.update(delta);
+	this.state.apply(this.skeleton);
+	this.skeleton.updateWorldTransform();
+	
+	var invisibleContainers = this.containers.slice();
+	var drawOrder = this.skeleton.drawOrder;
+	for (var i = 0, n = drawOrder.length; i < n; i++) {
+		var slot = drawOrder[i];
+		var attachment = slot.attachment;
+		var name = attachment.name;
+		var bone = slot.bone;
+		var container = this.dancer.getChildByName(name);
+		if (container) {
+			var rotationContainer = container.getChildByName("rotationContainer");
+			var bitmap = rotationContainer.getChildByName("bitmap");
+			container.visible = true;
+			container.x = bone.worldX + attachment.x * bone.m00 + attachment.y * bone.m01;
+			container.y = bone.worldY + attachment.x * bone.m10 + attachment.y * bone.m11;
+			container.scaleX = bone.worldScaleX;
+			container.scaleY = bone.worldScaleY;
+			container.rotation = -slot.bone.worldRotation;
+			rotationContainer.rotation = -attachment.rotation;
+			this.dancer.addChild(container);
+			invisibleContainers.splice(invisibleContainers.indexOf(container), 1);
+		}
+	}
+	for (var k in invisibleContainers) {
+		invisibleContainers[k].visible = false;
+	}
+}
